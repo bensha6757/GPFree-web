@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C&S Lab - AI Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Noise overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">C&S Lab</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#founders" class="nav-link">Founders</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content" id="heroContent">
+      <h1 class="hero-title" data-reveal>Advancing AI Through<br>Rigorous Research</h1>
+      <p class="hero-subtitle" data-reveal data-reveal-delay="100">We are an AI research lab, studying foundational models to optimize the way we train our models.</p>
+      <a href="#about" class="btn btn-primary" data-reveal data-reveal-delay="200">Learn More</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section section-alt" id="about">
+    <div class="container">
+      <span class="eyebrow" data-reveal>ABOUT US</span>
+      <h2 class="section-title" data-reveal>AI Research at the Frontier</h2>
+      <p class="section-text" data-reveal>C&S Lab is an AI research initiative founded by Ben Shapira and Roi Cohen. Our work spans LLM factuality, adversarial robustness, biomedical AI, and interpretability. With publications at top-tier venues and experience at IBM Research, Microsoft, and Unit 8200, we combine deep theoretical foundations with real-world engineering to push the boundaries of AI.</p>
+      <div class="stats-grid">
+        <div class="stat-card" data-reveal data-reveal-delay="0">
+          <span class="stat-number" data-count="12">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Publications</span>
+        </div>
+        <div class="stat-card" data-reveal data-reveal-delay="100">
+          <span class="stat-number" data-count="6">0</span>
+          <span class="stat-label">Top-Tier Venues</span>
+        </div>
+        <div class="stat-card" data-reveal data-reveal-delay="200">
+          <span class="stat-number" data-count="2">0</span>
+          <span class="stat-label">Research Labs</span>
+        </div>
+        <div class="stat-card" data-reveal data-reveal-delay="300">
+          <span class="stat-number" data-count="10">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Years Combined Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research / Publications -->
+  <section class="section" id="research">
+    <div class="container">
+      <span class="eyebrow" data-reveal>OUR WORK</span>
+      <h2 class="section-title" data-reveal>Research Areas</h2>
+      <div class="services-grid">
+        <div class="service-card" data-reveal data-reveal-delay="0">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="service-title">LLM Factuality & Safety</h3>
+          <p class="service-desc">Detecting and mitigating hallucinations in large language models. Our work on cross-examination, uncertainty modeling, and the [IDK] token has been published at EMNLP, NeurIPS, and TACL.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="100">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 class="service-title">Adversarial Robustness & Vision</h3>
+          <p class="service-desc">Defending machine learning models against semantic adversarial attacks. Our StyleAT framework protects face recognition systems from style-based perturbations while preserving model accuracy.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="200">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <h3 class="service-title">Biomedical & Multimodal AI</h3>
+          <p class="service-desc">Building foundation models that bridge molecular, protein, and textual modalities. Our MAMMAL and BioVERSE architectures enable multi-modal reasoning for drug discovery and biomedical research.</p>
+        </div>
+      </div>
+
+      <!-- Selected Publications -->
+      <div class="publications-section">
+        <h3 class="publications-heading" data-reveal>Selected Publications</h3>
+        <ul class="publications-list">
+          <li class="publication-item" data-reveal data-reveal-delay="0">
+            <span class="pub-venue">NeurIPS 2024</span>
+            <a href="https://nips.cc/virtual/2024/poster/94825" class="pub-title" target="_blank" rel="noopener">I Don't Know: Explicit Modeling of Uncertainty with an [IDK] Token</a>
+            <span class="pub-authors">Roi Cohen, Konstantin Dobler, Eden Biran, Gerard de Melo</span>
+          </li>
+          <li class="publication-item" data-reveal data-reveal-delay="50">
+            <span class="pub-venue">TACL 2024</span>
+            <a href="https://aclanthology.org/2024.tacl-1.16/" class="pub-title" target="_blank" rel="noopener">Evaluating the Ripple Effects of Knowledge Editing in Language Models</a>
+            <span class="pub-authors">Roi Cohen, Eden Biran, Ori Yoran, Amir Globerson, Mor Geva</span>
+          </li>
+          <li class="publication-item" data-reveal data-reveal-delay="100">
+            <span class="pub-venue">EMNLP 2023</span>
+            <a href="https://aclanthology.org/2023.emnlp-main.778/" class="pub-title" target="_blank" rel="noopener">LM vs LM: Detecting Factual Errors via Cross-Examination</a>
+            <span class="pub-authors">Roi Cohen, May Hamri, Mor Geva, Amir Globerson</span>
+          </li>
+          <li class="publication-item" data-reveal data-reveal-delay="150">
+            <span class="pub-venue">Findings EMNLP 2025</span>
+            <a href="https://arxiv.org/abs/2505.20487" class="pub-title" target="_blank" rel="noopener">InFact: Informativeness Alignment for Improved LLM Factuality</a>
+            <span class="pub-authors">Roi Cohen, Russa Biswas, Gerard de Melo</span>
+          </li>
+          <li class="publication-item" data-reveal data-reveal-delay="300">
+            <span class="pub-venue">Under Review, ICML 2026</span>
+            <a href="https://openreview.net/forum?id=bso6S1JNOd" class="pub-title" target="_blank" rel="noopener">StyleAT: Defending Face Recognition Against Semantic Attacks</a>
+            <span class="pub-authors">Ben Shapira, Roi Cohen, Shang-Tse Chen, Mahmood Sharif</span>
+          </li>
+          <li class="publication-item" data-reveal data-reveal-delay="200">
+            <span class="pub-venue">arXiv 2024</span>
+            <a href="https://arxiv.org/abs/2410.22367" class="pub-title" target="_blank" rel="noopener">MAMMAL: Molecular Aligned Multi-Modal Architecture and Language</a>
+            <span class="pub-authors">Yoel Shoshan, Moshiko Raboh, Michal Ozery-Flato, Vadim Ratner, Alex Golts, Jeffrey K. Weber, Ella Barkan, Simona Rabinovici-Cohen, Sagi Polaczek, Ido Amos, Ben Shapira, Liam Hazan, Matan Ninio, Sivan Ravid, Michael M. Danziger, Yosi Shamay, Sharon Kurant, Joseph A. Morrone, Parthasarathy Suryanarayanan, Michal Rosen-Zvi, Efrat Hexter</span>
+          </li>
+          <li class="publication-item" data-reveal data-reveal-delay="250">
+            <span class="pub-venue">arXiv 2025</span>
+            <a href="https://arxiv.org/abs/2510.01428" class="pub-title" target="_blank" rel="noopener">BioVERSE: Representation Alignment of Biomedical Modalities to LLMs</a>
+            <span class="pub-authors">Ching-Huei Tsou, Michal Ozery-Flato, Ella Barkan, Diwakar Mahajan, Ben Shapira</span>
+          </li>
+          <li class="publication-item" data-reveal data-reveal-delay="350">
+            <span class="pub-venue">Under Review, ICLR 2026</span>
+            <a href="https://openreview.net/forum?id=Jlc4IV3qr4" class="pub-title" target="_blank" rel="noopener">Knowledgeless Language Models: Decoupling Linguistic Competence and Factual Knowledge</a>
+            <span class="pub-authors">Roi Cohen, Yvan Carre, Nick Lechtenborger et al.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founders -->
+  <section class="section section-alt" id="founders">
+    <div class="container">
+      <span class="eyebrow" data-reveal>THE TEAM</span>
+      <h2 class="section-title" data-reveal>Meet the Founders</h2>
+      <div class="founders-grid">
+        <div class="founder-card" data-reveal data-reveal-direction="left">
+          <div class="founder-image-wrap">
+            <div class="founder-glow"></div>
+            <img src="imgs/Ben.png" alt="Ben Shapira" class="founder-image" data-parallax>
+          </div>
+          <div class="founder-info">
+            <h3 class="founder-name">Ben Shapira</h3>
+            <span class="founder-title">Co-Founder &middot; AI Researcher</span>
+            <p class="founder-bio">M.Sc. Computer Science from Tel Aviv University, specializing in adversarial robustness and computer vision. Currently an AI Researcher at IBM Research, developing ML methods for drug discovery and multimodal biomedical foundation models. Previously a Data Science & Software Engineer at AlgoSec, integrating NLP/LLMs into production systems. Former intelligence analyst at IDF Unit 8200.</p>
+            <div class="founder-socials">
+              <a href="https://www.linkedin.com/in/benshapiraa/" class="social-link" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="https://scholar.google.com/citations?user=-m0Uq80AAAAJ&hl=en" class="social-link" aria-label="Google Scholar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="founder-card" data-reveal data-reveal-direction="right">
+          <div class="founder-image-wrap">
+            <div class="founder-glow"></div>
+            <img src="imgs/Roi.png" alt="Roi Cohen" class="founder-image" data-parallax>
+          </div>
+          <div class="founder-info">
+            <h3 class="founder-name">Roi Cohen</h3>
+            <span class="founder-title">Co-Founder &middot; AI Researcher</span>
+            <p class="founder-bio">PhD candidate in Computer Science at HPI &amp; TU Berlin, researching LLM factuality, interpretability, and safety. M.Sc. from Tel Aviv University under Prof. Amir Globerson and Prof. Mor Geva. Former Research Scientist at IBM Research and intern at Microsoft. Published at NeurIPS, EMNLP, TACL, and EACL. Official NeurIPS and ACL reviewer. Featured in The Wall Street Journal. Former researcher at IDF Unit 8200.</p>
+            <div class="founder-socials">
+              <a href="https://www.linkedin.com/in/roicohen9/" class="social-link" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="https://scholar.google.com/citations?user=TcPUXJYAAAAJ&hl=en" class="social-link" aria-label="Google Scholar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="section contact-section" id="contact">
+    <div class="container contact-container">
+      <span class="eyebrow" data-reveal>GET IN TOUCH</span>
+      <h2 class="section-title" data-reveal>Interested in Our Research?</h2>
+      <p class="section-text" data-reveal>Whether you're exploring collaboration opportunities, interested in our publications, or want to discuss the future of trustworthy AI &mdash; we'd love to hear from you.</p>
+      <a href="mailto:hello@gpfree.io" class="btn btn-primary btn-lg" data-reveal data-reveal-delay="100">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 C&S Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
