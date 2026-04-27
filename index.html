@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pelora - AI Research</title>
+  <meta name="description" content="Pelora builds AI infrastructure that generates task-specific model updates from data and task descriptions, reducing the cost and time of creating specialized AI models.">
+  <title>Pelora — Generate Specialized AI Models</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -11,10 +12,8 @@
 </head>
 <body>
 
-  <!-- Noise overlay -->
   <div class="noise-overlay" aria-hidden="true"></div>
 
-  <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#hero" class="nav-logo">Pelora</a>
@@ -23,30 +22,145 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#hero" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#problem" class="nav-link">Problem</a></li>
+        <li><a href="#solution" class="nav-link">Solution</a></li>
+        <li><a href="#technology" class="nav-link">Technology</a></li>
         <li><a href="#founders" class="nav-link">Founders</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content" id="heroContent">
-      <h1 class="hero-title" data-reveal>Advancing AI Through<br>Rigorous Research</h1>
-      <p class="hero-subtitle" data-reveal data-reveal-delay="100">We are an AI research initiative focused on advancing foundation models and improving how modern AI systems are trained, aligned, and deployed.</p>
-      <a href="#about" class="btn btn-primary" data-reveal data-reveal-delay="200">Learn More</a>
+      <span class="eyebrow" data-reveal>AI MODEL GENERATION INFRASTRUCTURE</span>
+      <h1 class="hero-title" data-reveal>Generate specialized AI models instead of training them.</h1>
+      <p class="hero-subtitle" data-reveal data-reveal-delay="100">
+        Pelora is building infrastructure that creates task-specific model updates directly from data and task descriptions — turning expensive model training loops into fast, scalable model generation.
+      </p>
+      <div class="hero-actions" data-reveal data-reveal-delay="200">
+        <a href="#solution" class="btn btn-primary">See How It Works</a>
+        <a href="mailto:info@pelora-ai.com" class="btn btn-secondary">Contact Us</a>
+      </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="section section-alt" id="about">
+  <section class="section section-alt" id="problem">
     <div class="container">
-      <span class="eyebrow" data-reveal>ABOUT US</span>
-      <h2 class="section-title" data-reveal>AI Research at the Frontier</h2>
-      <p class="section-text" data-reveal>Pelora is an AI research initiative founded by Ben Shapira and Roi Cohen. Our work spans LLM factuality, adversarial robustness, biomedical AI, and interpretability. With publications at top-tier venues and experience at top-tier industrial reserach labs, we combine deep theoretical foundations with real-world engineering to push the boundaries of AI.</p>
+      <span class="eyebrow" data-reveal>THE PROBLEM</span>
+      <h2 class="section-title" data-reveal>Custom AI models are still too expensive and slow to create.</h2>
+      <p class="section-text" data-reveal>
+        Organizations increasingly need models adapted to their own data, domains, and workflows. But today, creating a specialized model usually requires collecting data, running fine-tuning jobs, evaluating results, and repeating the process — often across multiple expensive iterations.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card" data-reveal data-reveal-delay="0">
+          <h3 class="service-title">High Compute Cost</h3>
+          <p class="service-desc">Fine-tuning and retraining require GPUs, infrastructure, and repeated experiments before a useful model is ready.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="100">
+          <h3 class="service-title">Slow Iteration</h3>
+          <p class="service-desc">Every new task, customer, dataset, or domain requires another training cycle — slowing down product development and deployment.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="200">
+          <h3 class="service-title">Specialized Expertise</h3>
+          <p class="service-desc">Building reliable custom models requires deep ML expertise, careful evaluation, and non-trivial engineering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="solution">
+    <div class="container">
+      <span class="eyebrow" data-reveal>OUR SOLUTION</span>
+      <h2 class="section-title" data-reveal>Pelora turns model adaptation into model generation.</h2>
+      <p class="section-text" data-reveal>
+        Instead of training a new model for every task, Pelora learns how models should adapt. Given examples and a task description, our system generates compact model updates that can be applied directly to a base model.
+      </p>
+
+      <div class="process-grid">
+        <div class="process-card" data-reveal data-reveal-delay="0">
+          <span class="process-step">01</span>
+          <h3>Input examples + task</h3>
+          <p>Pelora receives a small task-specific dataset, examples, constraints, or a natural-language task description.</p>
+        </div>
+        <div class="process-card" data-reveal data-reveal-delay="100">
+          <span class="process-step">02</span>
+          <h3>Generate model update</h3>
+          <p>The system generates task-specific adaptation weights instead of running a conventional training loop.</p>
+        </div>
+        <div class="process-card" data-reveal data-reveal-delay="200">
+          <span class="process-step">03</span>
+          <h3>Deploy instantly</h3>
+          <p>The generated update is applied to a base model and can be evaluated, deployed, or iterated on rapidly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="technology">
+    <div class="container">
+      <span class="eyebrow" data-reveal>TECHNOLOGY</span>
+      <h2 class="section-title" data-reveal>Learning the space of model updates.</h2>
+      <p class="section-text" data-reveal>
+        Pelora is based on a new architecture for generating compact model updates. The system learns from trained adapters and their corresponding tasks, then uses that knowledge to produce new task-specific updates on demand.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card" data-reveal data-reveal-delay="0">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="service-title">Task & Data Conditioning</h3>
+          <p class="service-desc">The system uses both semantically encoded examples and task descriptions to understand what adaptation is needed.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="100">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8v8H8z"/><path d="M8 2v4M16 2v4M8 18v4M16 18v4M2 8h4M2 16h4M18 8h4M18 16h4"/></svg>
+          </div>
+          <h3 class="service-title">Generative Model Updates</h3>
+          <p class="service-desc">Instead of optimizing weights from scratch, Pelora generates structured updates that adapt a base model to a new task.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="200">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <h3 class="service-title">Performance Feedback</h3>
+          <p class="service-desc">Generated updates can be evaluated on real tasks, allowing the system to improve toward practical model performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="use-cases">
+    <div class="container">
+      <span class="eyebrow" data-reveal>USE CASES</span>
+      <h2 class="section-title" data-reveal>For teams that need many specialized models.</h2>
+      <div class="services-grid">
+        <div class="service-card" data-reveal data-reveal-delay="0">
+          <h3 class="service-title">Healthcare & Life Sciences</h3>
+          <p class="service-desc">Generate models adapted to clinical notes, biomedical literature, genomic data, or specialized healthcare workflows.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="100">
+          <h3 class="service-title">Enterprise AI</h3>
+          <p class="service-desc">Create models specialized for internal documents, customer support, compliance, legal workflows, or proprietary knowledge.</p>
+        </div>
+        <div class="service-card" data-reveal data-reveal-delay="200">
+          <h3 class="service-title">Research & AI Labs</h3>
+          <p class="service-desc">Accelerate experimentation by replacing repeated fine-tuning runs with fast generated model updates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="research">
+    <div class="container">
+      <span class="eyebrow" data-reveal>WHY US</span>
+      <h2 class="section-title" data-reveal>Built by AI researchers and ML systems builders.</h2>
+      <p class="section-text" data-reveal>
+        Pelora is founded by Ben Shapira and Roi Cohen. Our work spans language models, model reliability, biomedical AI, adversarial robustness, and production ML systems. We combine frontier AI research with practical experience building and evaluating real-world AI systems.
+      </p>
       <div class="stats-grid">
         <div class="stat-card" data-reveal data-reveal-delay="0">
           <span class="stat-number" data-count="12">0</span><span class="stat-suffix">+</span>
@@ -58,48 +172,16 @@
         </div>
         <div class="stat-card" data-reveal data-reveal-delay="200">
           <span class="stat-number" data-count="2">0</span>
-          <span class="stat-label">Research Labs</span>
+          <span class="stat-label">Industrial Research Labs</span>
         </div>
         <div class="stat-card" data-reveal data-reveal-delay="300">
           <span class="stat-number" data-count="10">0</span><span class="stat-suffix">+</span>
           <span class="stat-label">Years Combined Experience</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Research / Publications -->
-  <section class="section" id="research">
-    <div class="container">
-      <span class="eyebrow" data-reveal>OUR WORK</span>
-      <h2 class="section-title" data-reveal>Research Areas</h2>
-      <div class="services-grid">
-        <div class="service-card" data-reveal data-reveal-delay="0">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3 class="service-title">LLM Factuality & Safety</h3>
-          <p class="service-desc">Detecting and mitigating hallucinations in large language models. Our work on cross-examination, uncertainty modeling, and the [IDK] token has been published at EMNLP, NeurIPS, and TACL.</p>
-        </div>
-        <div class="service-card" data-reveal data-reveal-delay="100">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-          </div>
-          <h3 class="service-title">Adversarial Robustness & Vision</h3>
-          <p class="service-desc">Defending machine learning models against semantic adversarial attacks. Our StyleAT framework protects face recognition systems from style-based perturbations while preserving model accuracy.</p>
-        </div>
-        <div class="service-card" data-reveal data-reveal-delay="200">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          </div>
-          <h3 class="service-title">Biomedical & Multimodal AI</h3>
-          <p class="service-desc">Building foundation models that bridge molecular, protein, and textual modalities. Our MAMMAL and BioVERSE architectures enable multi-modal reasoning for drug discovery and biomedical research.</p>
-        </div>
-      </div>
-
-      <!-- Selected Publications -->
       <div class="publications-section">
-        <h3 class="publications-heading" data-reveal>Selected Publications</h3>
+        <h3 class="publications-heading" data-reveal>Selected Research</h3>
         <ul class="publications-list">
           <li class="publication-item" data-reveal data-reveal-delay="0">
             <span class="pub-venue">NeurIPS 2024</span>
@@ -121,23 +203,23 @@
             <a href="https://arxiv.org/abs/2505.20487" class="pub-title" target="_blank" rel="noopener">InFact: Informativeness Alignment for Improved LLM Factuality</a>
             <span class="pub-authors">Roi Cohen, Russa Biswas, Gerard de Melo</span>
           </li>
-          <li class="publication-item" data-reveal data-reveal-delay="300">
-            <span class="pub-venue">Under Review, ICML 2026</span>
-            <a href="https://openreview.net/forum?id=bso6S1JNOd" class="pub-title" target="_blank" rel="noopener">StyleAT: Defending Face Recognition Against Semantic Attacks</a>
-            <span class="pub-authors">Ben Shapira, Roi Cohen, Shang-Tse Chen, Mahmood Sharif</span>
-          </li>
           <li class="publication-item" data-reveal data-reveal-delay="200">
             <span class="pub-venue">arXiv 2024</span>
             <a href="https://arxiv.org/abs/2410.22367" class="pub-title" target="_blank" rel="noopener">MAMMAL: Molecular Aligned Multi-Modal Architecture and Language</a>
-            <span class="pub-authors">Yoel Shoshan, Moshiko Raboh, Michal Ozery-Flato, Vadim Ratner, Alex Golts, Jeffrey K. Weber, Ella Barkan, Simona Rabinovici-Cohen, Sagi Polaczek, Ido Amos, Ben Shapira, Liam Hazan, Matan Ninio, Sivan Ravid, Michael M. Danziger, Yosi Shamay, Sharon Kurant, Joseph A. Morrone, Parthasarathy Suryanarayanan, Michal Rosen-Zvi, Efrat Hexter</span>
+            <span class="pub-authors">Yoel Shoshan et al., including Ben Shapira</span>
           </li>
           <li class="publication-item" data-reveal data-reveal-delay="250">
             <span class="pub-venue">arXiv 2025</span>
             <a href="https://arxiv.org/abs/2510.01428" class="pub-title" target="_blank" rel="noopener">BioVERSE: Representation Alignment of Biomedical Modalities to LLMs</a>
-            <span class="pub-authors">Ching-Huei Tsou, Michal Ozery-Flato, Ella Barkan, Diwakar Mahajan, Ben Shapira</span>
+            <span class="pub-authors">Ching-Huei Tsou et al., including Ben Shapira</span>
+          </li>
+          <li class="publication-item" data-reveal data-reveal-delay="300">
+            <span class="pub-venue">Under Review</span>
+            <a href="https://openreview.net/forum?id=bso6S1JNOd" class="pub-title" target="_blank" rel="noopener">StyleAT: Defending Face Recognition Against Semantic Attacks</a>
+            <span class="pub-authors">Ben Shapira, Roi Cohen, Shang-Tse Chen, Mahmood Sharif</span>
           </li>
           <li class="publication-item" data-reveal data-reveal-delay="350">
-            <span class="pub-venue">Under Review, ICLR 2026</span>
+            <span class="pub-venue">Under Review</span>
             <a href="https://openreview.net/forum?id=Jlc4IV3qr4" class="pub-title" target="_blank" rel="noopener">Knowledgeless Language Models: Decoupling Linguistic Competence and Factual Knowledge</a>
             <span class="pub-authors">Roi Cohen, Yvan Carre, Nick Lechtenborger et al.</span>
           </li>
@@ -146,7 +228,6 @@
     </div>
   </section>
 
-  <!-- Founders -->
   <section class="section section-alt" id="founders">
     <div class="container">
       <span class="eyebrow" data-reveal>THE TEAM</span>
@@ -159,13 +240,13 @@
           </div>
           <div class="founder-info">
             <h3 class="founder-name">Ben Shapira</h3>
-            <span class="founder-title">Co-Founder &middot; AI Researcher</span>
-            <p class="founder-bio">M.Sc. in CS from Tel Aviv University, specializing in adversarial robustness and computer vision. Currently a Research Scientist at IBM Research. Previously a Data Science and Software Engineer at AlgoSec, integrating NLP and LLM systems into production environments. Former intelligence analyst at IDF Unit 8200.</p>
+            <span class="founder-title">Co-Founder · AI Researcher</span>
+            <p class="founder-bio">M.Sc. in Computer Science from Tel Aviv University. Research Scientist at IBM Research working on biomedical and multimodal AI. Previously built production ML, NLP, and LLM systems at AlgoSec. Former intelligence analyst at IDF Unit 8200.</p>
             <div class="founder-socials">
-              <a href="https://www.linkedin.com/in/benshapiraa/" class="social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/benshapiraa/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
-              <a href="https://scholar.google.com/citations?user=-m0Uq80AAAAJ&hl=en" class="social-link" aria-label="Google Scholar">
+              <a href="https://scholar.google.com/citations?user=-m0Uq80AAAAJ&hl=en" class="social-link" aria-label="Google Scholar" target="_blank" rel="noopener">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
               </a>
             </div>
@@ -178,13 +259,13 @@
           </div>
           <div class="founder-info">
             <h3 class="founder-name">Roi Cohen</h3>
-            <span class="founder-title">Co-Founder &middot; AI Researcher</span>
-            <p class="founder-bio">PhD candidate in CS at HPI &amp; TU Berlin, researching LLM factuality, interpretability, and safety. M.Sc. from Tel Aviv University under Prof. Amir Globerson and Prof. Mor Geva. Former Research Scientist at IBM Research and intern at Microsoft. Published at NeurIPS, EMNLP, TACL, and EACL. Official NeurIPS and ACL reviewer. Featured in The Wall Street Journal. Former researcher at IDF Unit 8200.</p>
+            <span class="founder-title">Co-Founder · AI Researcher</span>
+            <p class="founder-bio">PhD candidate in AI at HPI & TU Berlin, researching LLM reliability, factuality, and model behavior. Former IBM Research and Microsoft Research intern. Published at NeurIPS, EMNLP, TACL, and EACL. Former researcher at IDF Unit 8200.</p>
             <div class="founder-socials">
-              <a href="https://www.linkedin.com/in/roicohen9/" class="social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/roicohen9/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
-              <a href="https://scholar.google.com/citations?user=TcPUXJYAAAAJ&hl=en" class="social-link" aria-label="Google Scholar">
+              <a href="https://scholar.google.com/citations?user=TcPUXJYAAAAJ&hl=en" class="social-link" aria-label="Google Scholar" target="_blank" rel="noopener">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
               </a>
             </div>
@@ -194,17 +275,17 @@
     </div>
   </section>
 
-  <!-- Contact CTA -->
   <section class="section contact-section" id="contact">
     <div class="container contact-container">
       <span class="eyebrow" data-reveal>GET IN TOUCH</span>
-      <h2 class="section-title" data-reveal>Interested in Our Research?</h2>
-      <p class="section-text" data-reveal>Whether you're exploring collaboration opportunities, interested in our publications, or want to discuss the future of trustworthy AI &mdash; we'd love to hear from you.</p>
-      <a href="mailto:info@pelora-ai.com" class="btn btn-primary btn-lg" data-reveal data-reveal-delay="100">Get in Touch</a>
+      <h2 class="section-title" data-reveal>Building many specialized AI models?</h2>
+      <p class="section-text" data-reveal>
+        We are speaking with AI teams, research labs, and companies that repeatedly train or customize models. If this sounds like you, we’d love to talk.
+      </p>
+      <a href="mailto:info@pelora-ai.com" class="btn btn-primary btn-lg" data-reveal data-reveal-delay="100">Contact Pelora</a>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2026 Pelora. All rights reserved.</p>
