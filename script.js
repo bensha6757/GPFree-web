@@ -1,111 +1,76 @@
 (() => {
   'use strict';
 
-  // ========================================
-  // Scroll Reveal (IntersectionObserver)
-  // ========================================
+  // =====================================================================
+  // Scroll reveal — IntersectionObserver
+  // =====================================================================
+  const revealEls = document.querySelectorAll('[data-reveal]');
 
-  const revealElements = document.querySelectorAll('[data-reveal]');
-
-  const revealObserver = new IntersectionObserver(
+  const revealObs = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const delay = parseInt(el.dataset.revealDelay || '0', 10);
-          setTimeout(() => el.classList.add('revealed'), delay);
-          revealObserver.unobserve(el);
-        }
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const delay = parseInt(el.dataset.revealDelay || '0', 10);
+        setTimeout(() => el.classList.add('revealed'), delay);
+        revealObs.unobserve(el);
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
-  revealElements.forEach((el) => revealObserver.observe(el));
+  revealEls.forEach((el) => revealObs.observe(el));
 
-  // ========================================
-  // Navbar scroll state & active section
-  // ========================================
-
-  const navbar = document.getElementById('navbar');
-  const navLinks = document.querySelectorAll('.nav-link');
+  // =====================================================================
+  // Navbar — scroll state + active-section highlight
+  // =====================================================================
+  const navbar   = document.getElementById('navbar');
+  const navLinks = document.querySelectorAll('.nav-link:not(.nav-cta)');
   const sections = document.querySelectorAll('section[id]');
 
   function updateNavbar() {
-    // Scrolled state
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
 
-    // Active section
-    const scrollPos = window.scrollY + window.innerHeight / 3;
-    let currentId = '';
+    const scrollMid = window.scrollY + window.innerHeight * 0.35;
+    let activeId = '';
 
-    sections.forEach((section) => {
-      if (section.offsetTop <= scrollPos) {
-        currentId = section.id;
-      }
+    sections.forEach((sec) => {
+      if (sec.offsetTop <= scrollMid) activeId = sec.id;
     });
 
     navLinks.forEach((link) => {
-      const href = link.getAttribute('href').substring(1);
-      if (href === currentId) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
+      const href = link.getAttribute('href');
+      if (!href) return;
+      link.classList.toggle('active', href.substring(1) === activeId);
     });
   }
 
-  // ========================================
-  // Hero parallax fade
-  // ========================================
-
+  // =====================================================================
+  // Hero content — parallax fade on scroll
+  // =====================================================================
   const heroContent = document.getElementById('heroContent');
 
   function updateHeroParallax() {
     if (!heroContent) return;
     const scrollY = window.scrollY;
-    const heroHeight = window.innerHeight;
-    if (scrollY < heroHeight) {
-      const progress = scrollY / heroHeight;
-      heroContent.style.opacity = 1 - progress * 1.3;
-      heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
-    }
+    const vp = window.innerHeight;
+    if (scrollY >= vp) return;
+    const t = scrollY / vp;
+    heroContent.style.opacity   = String(1 - t * 1.4);
+    heroContent.style.transform = `translateY(${scrollY * 0.22}px)`;
   }
 
-  // ========================================
-  // Founder image parallax
-  // ========================================
-
-  const parallaxImages = document.querySelectorAll('[data-parallax]');
-
-  function updateFounderParallax() {
-    parallaxImages.forEach((img) => {
-      const rect = img.getBoundingClientRect();
-      const viewH = window.innerHeight;
-      if (rect.top < viewH && rect.bottom > 0) {
-        const center = rect.top + rect.height / 2;
-        const offset = ((center - viewH / 2) / viewH) * -20;
-        img.style.transform = `translateY(${offset}px)`;
-      }
-    });
-  }
-
-  // ========================================
+  // =====================================================================
   // Stat counter animation
-  // ========================================
-
+  // =====================================================================
   const counters = document.querySelectorAll('[data-count]');
-  const countedSet = new Set();
+  const counted  = new Set();
 
-  const counterObserver = new IntersectionObserver(
+  const counterObs = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !countedSet.has(entry.target)) {
-          countedSet.add(entry.target);
+        if (entry.isIntersecting && !counted.has(entry.target)) {
+          counted.add(entry.target);
           animateCounter(entry.target);
         }
       });
@@ -113,78 +78,84 @@
     { threshold: 0.5 }
   );
 
-  counters.forEach((el) => counterObserver.observe(el));
+  counters.forEach((el) => counterObs.observe(el));
 
   function animateCounter(el) {
-    const target = parseInt(el.dataset.count, 10);
+    const target   = parseInt(el.dataset.count, 10);
     const duration = 1800;
-    const start = performance.now();
+    const startTs  = performance.now();
 
     function tick(now) {
-      const elapsed = now - start;
+      const elapsed  = now - startTs;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
+      const eased    = 1 - Math.pow(1 - progress, 3);
       el.textContent = Math.round(target * eased);
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      }
+      if (progress < 1) requestAnimationFrame(tick);
     }
 
     requestAnimationFrame(tick);
   }
 
-  // ========================================
-  // Smooth scroll for nav links
-  // ========================================
-
-  navLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').substring(1);
-      const target = document.getElementById(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-
-      // Close mobile menu
-      const navLinksEl = document.getElementById('navLinks');
-      const navToggle = document.getElementById('navToggle');
-      navLinksEl.classList.remove('open');
-      navToggle.classList.remove('open');
+  // =====================================================================
+  // Spotlight — mouse-follow radial glow on .spotlight-card
+  // =====================================================================
+  document.querySelectorAll('.spotlight-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      card.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.removeProperty('--mx');
+      card.style.removeProperty('--my');
     });
   });
 
-  // ========================================
-  // Mobile nav toggle
-  // ========================================
-
-  const navToggle = document.getElementById('navToggle');
+  // =====================================================================
+  // Smooth scroll for every anchor that points to an id on this page
+  // =====================================================================
+  const navToggle  = document.getElementById('navToggle');
   const navLinksEl = document.getElementById('navLinks');
 
-  navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('open');
-    navLinksEl.classList.toggle('open');
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const id     = link.getAttribute('href').substring(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+
+      // close mobile menu if open
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navLinksEl.classList.remove('open');
+    });
   });
 
-  // ========================================
-  // Scroll handler (rAF throttled)
-  // ========================================
+  // =====================================================================
+  // Mobile nav toggle
+  // =====================================================================
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinksEl.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
 
-  let ticking = false;
+  // =====================================================================
+  // RAF-throttled scroll handler
+  // =====================================================================
+  let rafPending = false;
 
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateNavbar();
-        updateHeroParallax();
-        updateFounderParallax();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      updateNavbar();
+      updateHeroParallax();
+      rafPending = false;
+    });
+  }, { passive: true });
 
-  // Initial call
+  // initial state
   updateNavbar();
 })();
