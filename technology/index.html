@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Technology - Pelora</title>
-<meta name="description" content="How the Pelora engine generates a trained LoRA expert from labeled examples in a single forward pass, verifies it against held-out performance, and regenerates it when data drifts or the base model changes.">
+<meta name="description" content="How the Pelora orchestrator decides what its agent needs to know, commissions a trained expert for it in seconds, and keeps that expert current as your data moves.">
 <link rel="canonical" href="https://pelora-ai.com/technology/">
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Pelora">
 <meta property="og:url" content="https://pelora-ai.com/technology/">
 <meta property="og:title" content="Technology - Pelora">
-<meta property="og:description" content="A trained expert from labeled examples in one forward pass, verified against held-out performance, regenerated when the data moves.">
+<meta property="og:description" content="An orchestrator that decides what it needs to know and builds it. Trained experts in seconds, kept current as your data moves.">
 <meta property="og:image" content="https://pelora-ai.com/assets/og/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Technology - Pelora">
-<meta name="twitter:description" content="A trained expert from labeled examples in one forward pass, verified against held-out performance, regenerated when the data moves.">
+<meta name="twitter:description" content="An orchestrator that decides what it needs to know and builds it. Trained experts in seconds, kept current as your data moves.">
 <meta name="twitter:image" content="https://pelora-ai.com/assets/og/og.png">
 
 <link rel="icon" type="image/png" href="/imgs/logo/pelora-logo-icononly-color-zoom.png">
@@ -52,11 +52,12 @@
   <div class="wrap">
     <p class="eyebrow" data-reveal>Technology</p>
     <h1 class="statement statement--wide" data-reveal style="font-size:var(--step-4)">
-      A trained expert, generated in one pass and checked before it works.
+      The agent works out what it needs to know. Then it builds it.
     </h1>
     <p class="lede" data-reveal data-reveal-delay="80" style="margin-top:2rem">
-      Pelora's engine takes labeled examples of a task and emits a trained expert for it in a
-      single pass, in about 13 seconds. There is no training run to schedule.
+      Most agent platforms give you an orchestrator that calls models. Ours runs a factory. When a
+      job needs understanding the agent does not have, it commissions a specialist, waits about
+      13 seconds, and gets back to work.
     </p>
   </div>
 </section>
@@ -65,17 +66,18 @@
   <div class="wrap split split--sticky">
     <div>
       <p class="eyebrow" data-reveal>01</p>
-      <h2 class="statement" data-reveal>Generation, not training.</h2>
+      <h2 class="statement" data-reveal>The orchestrator runs the factory.</h2>
     </div>
     <div data-reveal data-reveal-delay="80">
       <p class="lede">
-        Conventional specialization means assembling a dataset, configuring a run, holding
-        accelerators for hours, and evaluating whatever comes out. The engine replaces that loop
-        entirely.
+        This is the part that has to be autonomous, and it is. The orchestrator recognizes when a
+        piece of work falls outside what its current experts cover, commissions one for it, routes
+        the work there, and keeps or retires it based on how it performs in production.
       </p>
       <p class="lede" style="margin-top:1.5rem">
-        It learns from your labeled examples - the inputs and the outputs you actually want. It
-        does not work from a written description of the task.
+        Nobody files a ticket. Nobody schedules a training run. The system that decides an expert
+        is needed is the same system that can produce one, which is the only reason producing them
+        on demand is worth anything.
       </p>
     </div>
   </div>
@@ -85,18 +87,21 @@
   <div class="wrap split split--sticky">
     <div>
       <p class="eyebrow" data-reveal>02</p>
-      <h2 class="statement" data-reveal>The verification gate.</h2>
+      <h2 class="statement" data-reveal>Generation, not training.</h2>
     </div>
     <div data-reveal data-reveal-delay="80">
       <p class="lede">
-        A generated expert is not trusted because it was generated. Every candidate passes a
-        selection gate that measures it against held-out performance on the same task, and only a
-        candidate that clears the gate is cached and served.
+        Conventional specialization means assembling a dataset, configuring a run, holding
+        accelerators for hours, and evaluating whatever comes out. The engine replaces that loop
+        entirely: your data goes in, a trained expert comes out, in a single pass.
       </p>
       <p class="lede" style="margin-top:1.5rem">
-        This is the closed loop that makes the approach usable in production rather than
-        interesting in a paper. An expert reaches your work only after it has been measured, so
-        specialization is something you can verify rather than something you hope for.
+        Your data can be almost anything. A labeled task, an unlabeled corpus, a body of internal
+        knowledge. It does not have to be shaped into a training set first.
+      </p>
+      <p class="lede" style="margin-top:1.5rem">
+        Experts are validated before they are used. That runs behind the scenes and you should
+        never have to think about it.
       </p>
     </div>
   </div>
@@ -114,12 +119,9 @@
         while everyone assumes it is fine.
       </p>
       <p class="lede" style="margin-top:1.5rem">
-        When generation costs seconds, the calculus inverts. An expert is regenerated when its data
-        drifts, when a policy changes, or when you move to a newer base model. Base-model migration
-        stops being a retraining program and becomes a regeneration pass over the expert cache.
-      </p>
-      <p class="lede" style="margin-top:1.5rem">
-        The engine also keeps improving with every task it learns from.
+        When generation costs seconds, the calculus inverts. An expert is rebuilt when its data
+        moves, when a policy changes, or when you adopt a newer base model. Migration stops being
+        a retraining program and becomes a pass over the expert cache.
       </p>
     </div>
   </div>
@@ -129,34 +131,55 @@
   <div class="wrap split split--sticky">
     <div>
       <p class="eyebrow" data-reveal>04</p>
-      <h2 class="statement">Inside your perimeter.</h2>
+      <h2 class="statement" data-reveal>Next: the shape of the expert, not just its weights.</h2>
     </div>
     <div data-reveal data-reveal-delay="80">
       <p class="lede">
-        Experts are generated from your data and are yours. For organizations that cannot send data
-        out - banks, security, government - generation and serving run on your own GPUs, inside
-        your own network.
+        Today the engine produces a trained expert for a task. The architecture of that expert is
+        a fixed starting point.
       </p>
       <p class="lede" style="margin-top:1.5rem">
-        The deployment story is the same one as the ownership story. Your data trains your experts,
-        the weights belong to you, and nothing has to leave.
+        Where we are taking it next is choosing that architecture per task as well - how large the
+        expert needs to be, and how it is put together, tuned to the quality the job actually
+        demands and the cost you want to pay for it. Some tasks deserve more model than others,
+        and almost nobody has the time to work out which.
       </p>
     </div>
   </div>
 </section>
 
-<section class="band band--tight">
+<section class="band">
+  <div class="wrap split split--sticky">
+    <div>
+      <p class="eyebrow" data-reveal>05</p>
+      <h2 class="statement" data-reveal>Inside your perimeter.</h2>
+    </div>
+    <div data-reveal data-reveal-delay="80">
+      <p class="lede">
+        Experts are built from your data and they are yours. For organizations that cannot send
+        data out - banks, security, government - generation and serving run on your own GPUs,
+        inside your own network.
+      </p>
+      <p class="lede" style="margin-top:1.5rem">
+        The deployment story and the ownership story are the same story. Your data, your weights,
+        nothing leaves.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band on-dark band--tight">
   <div class="wrap wrap--narrow">
     <p class="eyebrow" data-reveal>Depth</p>
     <h2 class="statement statement--wide" data-reveal>
       Publicly we describe the system at block-diagram level.
     </h2>
     <p class="lede" data-reveal data-reveal-delay="80" style="margin-top:1.75rem">
-      The engine internals, the conditioning stack and the verification design are available under
-      deeper diligence and NDA.
+      The engine, the orchestration policy and the validation design are available under deeper
+      diligence and NDA.
     </p>
     <div class="actions" data-reveal data-reveal-delay="140" style="margin-top:2.5rem">
-      <a class="btn btn--primary" href="mailto:info@pelora-ai.com?subject=Technical%20diligence">Start a technical conversation <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
+      <a class="btn btn--primary" href="mailto:info@pelora-ai.com?subject=Technical%20conversation">Start a technical conversation <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
       <a class="btn btn--ghost" href="/#demo">See the comparison</a>
     </div>
   </div>

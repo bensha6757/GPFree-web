@@ -86,19 +86,17 @@ their actual product.
 
 Pelora productizes the factory.
 
-Our engine is a hypernetwork. Give it labeled examples of a task - the inputs and the outputs you
-actually want - and it emits a trained LoRA expert for that task in a single forward pass. About
-13 seconds on a commodity GPU, against roughly 3 hours for the conventional fine-tuning run it
-replaces, and up to 100x cheaper. There is no training job to schedule and no accelerator fleet to
-hold.
+Our engine takes your data - a labeled task, an unlabeled corpus, a body of internal knowledge -
+and emits a trained expert for it in a single pass. About 13 seconds on a commodity GPU, against
+roughly 3 hours for the conventional fine-tuning run it replaces, and up to 100x cheaper. There is
+no training job to schedule and no accelerator fleet to hold.
 
 Two properties matter more than the speed.
 
-The first is verification. A generated expert is not trusted because it was generated. Every
-candidate is measured against held-out performance on its own task, and only candidates that clear
-that gate get cached and served. We have validated the engine on close to a thousand held-out
-tasks. Generated experts significantly outperform the base model, and match traditionally
-fine-tuned models at a fraction of the cost and latency.
+The first is that the orchestrator drives it. The system that notices a capability is missing is
+the same system that can produce one, so experts get commissioned, routed to, and retired without
+anyone filing a ticket. A factory nobody has to operate is a different product from a faster
+training run. Experts are validated before they are used, and that happens quietly.
 
 The second is what seconds do to the economics of staying current. When regeneration is cheap,
 an expert stops being an artifact you archive and becomes something you keep fresh. Data drifts,

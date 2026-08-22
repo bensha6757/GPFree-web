@@ -175,7 +175,7 @@
       }, 900);
 
       setTimeout(function () {
-        state.textContent = 'Verifying against held-out data';
+        state.textContent = 'Validating';
       }, 2100);
 
       // 3. fresh expert
