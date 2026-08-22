@@ -1,364 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pelora builds AI infrastructure that generates task-specific model updates from data and task descriptions, reducing the cost and time of creating specialized AI models.">
-  <title>Pelora - Generate Specialized AI Models</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="imgs/logo/pelora-logo-icononly-color-zoom.png">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelora - Meta Agents that generate their own experts</title>
+<meta name="description" content="Pelora's agent platform turns your data into trained experts in a single pass, validates them before they go to work, and regenerates them when your data changes. The experts run on your infrastructure and the weights are yours.">
+<link rel="canonical" href="https://pelora-ai.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pelora">
+<meta property="og:url" content="https://pelora-ai.com/">
+<meta property="og:title" content="Pelora - Meta Agents that generate their own experts">
+<meta property="og:description" content="An agent whose orchestrator trains its own experts on the fly. Generated from your data in seconds, validated, and regenerated when your data changes.">
+<meta property="og:image" content="https://pelora-ai.com/assets/og/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pelora - Meta Agents that generate their own experts">
+<meta name="twitter:description" content="An agent whose orchestrator trains its own experts on the fly. Generated from your data in seconds, validated, and regenerated when your data changes.">
+<meta name="twitter:image" content="https://pelora-ai.com/assets/og/og.png">
+
+<link rel="icon" type="image/png" href="/imgs/logo/pelora-logo-icononly-color-zoom.png">
+<link rel="apple-touch-icon" href="/imgs/logo/pelora-logo-icononly-color.png">
+<link rel="alternate" type="application/rss+xml" title="Pelora blog" href="/rss.xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body>
 
-  <!-- Floating pill navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Pelora home">
-        <img src="imgs/logo/pelora-logo-white.png" alt="Pelora" height="26">
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks" role="list">
-        <li><a href="#problem"    class="nav-link">Problem</a></li>
-        <li><a href="#technology" class="nav-link">Technology</a></li>
-        <li><a href="#research"   class="nav-link">Research</a></li>
-        <li><a href="#founders"   class="nav-link">Team</a></li>
-        <li><a href="#contact"    class="nav-link nav-cta">Get in Touch</a></li>
-      </ul>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="wrap nav-inner">
+    <a href="/" class="nav-logo" aria-label="Pelora home">
+      <img src="/imgs/logo/pelora-logo-white.png" alt="Pelora" width="110" height="26">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="/technology/">Technology</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="mailto:info@pelora-ai.com" class="nav-cta">Talk to us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ================================================================ hero -->
+<section class="hero on-dark">
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h1 class="hero-title" data-reveal data-reveal-delay="60">Meta Agents that generate their own experts.</h1>
+    <p class="hero-sub" data-reveal data-reveal-delay="120">
+      Pelora's agent turns anything it must understand into a small trained specialist - generated
+      from your own data in seconds, validated, and regenerated when that data changes. Your world
+      moves into the weights, and the weights are yours.
+    </p>
+    <div class="actions" data-reveal data-reveal-delay="180">
+      <a class="btn btn--primary" href="mailto:info@pelora-ai.com">Talk to us <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
+      <a class="btn btn--ghost" href="#how">See how it works</a>
     </div>
-  </nav>
+    <p class="cycler" data-reveal data-reveal-delay="240">
+      <span>An expert in</span>
+      <span class="cycler-slot" data-cycler>
+        <span class="cycler-word">your codebase</span>
+        <span class="cycler-word">your claims process</span>
+        <span class="cycler-word">your protocols</span>
+        <span class="cycler-word">your world</span>
+      </span>
+    </p>
+  </div>
+</section>
 
-  <!-- ======= HERO ======= -->
-  <section class="hero" id="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-mesh"></div>
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-      <div class="hero-orb hero-orb-3"></div>
+<!-- ================================================================ idea -->
+<section class="band" id="idea">
+  <div class="wrap split split--sticky">
+    <div>
+      <p class="eyebrow" data-reveal>The idea</p>
+      <h2 class="statement" data-reveal>Context is a bill you pay forever. Training is a thing you own.</h2>
     </div>
-
-    <div class="hero-content" id="heroContent">
-      <div class="hero-eyebrow" data-reveal>
-        <span class="eyebrow-dot" aria-hidden="true"></span>
-        AI Model Generation Infrastructure
-      </div>
-
-      <h1 class="hero-title" data-reveal>
-        Generate <span class="gradient-text">specialized AI&nbsp;models</span>
-        instead of training&nbsp;them.
-      </h1>
-
-      <p class="hero-subtitle" data-reveal data-reveal-delay="80">
-        Pelora builds infrastructure that turns your data and task descriptions into
-        specialized AI models - dramatically reducing the cost and time of model development.
+    <div data-reveal data-reveal-delay="80">
+      <p class="lede">
+        Foundation models know everything public and nothing about your world. Today's agents
+        compensate by re-reading it on every call - context, retrieval, and cost that never ends.
       </p>
-
-      <div class="hero-actions" data-reveal data-reveal-delay="160">
-        <a href="#technology" class="btn btn-primary">
-          See How It Works
-        </a>
-        <a href="mailto:info@pelora-ai.com" class="btn btn-ghost">
-          Contact Us
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="scroll-bar"></div>
-    </div>
-  </section>
-
-  <!-- ======= PROBLEM ======= -->
-  <section class="section" id="problem">
-    <div class="container">
-      <span class="eyebrow" data-reveal>The Problem</span>
-      <h2 class="section-title" data-reveal>
-        Custom AI models are still too expensive and slow to create.
-      </h2>
-      <p class="section-text" data-reveal>
-        Organizations increasingly need models adapted to their own data, domains, and workflows.
-        But today, creating a specialized model is slow, expensive, and requires deep ML expertise
-        - often across multiple costly iterations before anything useful is ready.
+      <p class="lede" style="margin-top:1.5rem">
+        The Pelora agent learns instead. Whatever it needs to know becomes a trained expert,
+        created in about 13 seconds on a commodity GPU and validated before it ever does the work.
       </p>
+    </div>
+  </div>
+</section>
 
-      <div class="cards-grid">
-        <div class="card spotlight-card" data-reveal data-reveal-delay="0">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+<!-- ======================================================== how it works -->
+<section class="band on-dark" id="how">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>How it works</p>
+    <h2 class="statement statement--wide" data-reveal style="margin-bottom:3.5rem">
+      An orchestrator that does not just call models. It builds them.
+    </h2>
+
+    <ol class="steps" role="list">
+      <li class="step" data-reveal>
+        <span class="step-num">01</span>
+        <h3 class="step-title">One pass, one expert</h3>
+        <p class="step-body">Your data in, a trained expert out. A corpus, a task, a body of
+           knowledge - it does not matter which. No training run.</p>
+      </li>
+      <li class="step" data-reveal data-reveal-delay="80">
+        <span class="step-num">02</span>
+        <h3 class="step-title">Verified, not hoped-for</h3>
+        <p class="step-body">No expert goes to work before it has been verified. That happens
+           behind the scenes, every time.</p>
+      </li>
+      <li class="step" data-reveal data-reveal-delay="160">
+        <span class="step-num">03</span>
+        <h3 class="step-title">Alive, not archived</h3>
+        <p class="step-body">When data drifts or the base model upgrades, experts regenerate in seconds.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================================================================ demo -->
+<section class="band on-dark" id="demo">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>The difference, at speed</p>
+    <h2 class="statement statement--wide" data-reveal style="margin-bottom:2.5rem">
+      One expert. Thirteen seconds against three hours.
+    </h2>
+
+    <div class="demo-frame" data-reveal data-reveal-delay="60">
+      <div class="demo-bar">
+        <span>Same task, same base model, two ways to specialize it.</span>
+        <span class="actions">
+          <span id="raceLapse" hidden><strong>Time-lapse</strong></span>
+          <button class="btn btn--primary" id="raceStart" type="button">Start the run</button>
+          <button class="btn btn--ghost" id="raceReset" type="button" hidden>Reset</button>
+        </span>
+      </div>
+
+      <div class="race" id="race">
+        <div class="lane lane--pelora" data-lane="pelora">
+          <div class="lane-head">
+            <span class="lane-name">Pelora</span>
+            <span class="lane-hw">1x NVIDIA L4</span>
           </div>
-          <h3>High Compute Cost</h3>
-          <p>Fine-tuning and retraining require GPUs, infrastructure, and repeated experiments before a useful model is ready.</p>
+          <span class="track"><span class="track-fill"></span></span>
+          <dl class="readout">
+            <div><dt>Elapsed</dt><dd data-out="time">0.0s</dd></div>
+            <div><dt>Cost</dt><dd data-out="cost">$0.000</dd></div>
+            <div><dt>Progress</dt><dd data-out="pct">0.00%</dd></div>
+          </dl>
+          <p class="lane-status"><span class="dot" aria-hidden="true"></span><span class="label">Ready</span></p>
         </div>
-        <div class="card spotlight-card" data-reveal data-reveal-delay="80">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+
+        <div class="lane" data-lane="conventional">
+          <div class="lane-head">
+            <span class="lane-name">Conventional fine-tune</span>
+            <span class="lane-hw">8x A100</span>
           </div>
-          <h3>Slow Iteration</h3>
-          <p>Every new task, customer, dataset, or domain requires another training cycle - slowing down product development and deployment.</p>
-        </div>
-        <div class="card spotlight-card" data-reveal data-reveal-delay="160">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Specialized Expertise</h3>
-          <p>Building reliable custom models requires deep ML expertise, careful evaluation, and non-trivial engineering effort.</p>
+          <span class="track"><span class="track-fill"></span></span>
+          <dl class="readout">
+            <div><dt>Elapsed</dt><dd data-out="time">0.0s</dd></div>
+            <div><dt>Cost</dt><dd data-out="cost">$0.00</dd></div>
+            <div><dt>Progress</dt><dd data-out="pct">0.00%</dd></div>
+          </dl>
+          <p class="lane-status"><span class="dot" aria-hidden="true"></span><span class="label">Ready</span></p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ======= TECHNOLOGY ======= -->
-  <section class="section" id="technology">
-    <div class="container">
-      <span class="eyebrow" data-reveal>Technology</span>
-      <h2 class="section-title" data-reveal>A new approach to model specialization.</h2>
-      <p class="section-text" data-reveal>
-        Pelora replaces the conventional model development cycle with a new kind of infrastructure -
-        one that understands tasks and data, and produces specialized models with a fraction of the
-        usual effort.
-      </p>
+    <h3 class="statement" data-reveal style="margin:4.5rem 0 2rem">Then your data changes.</h3>
 
-      <div class="tech-grid">
-        <div class="tech-card spotlight-card" data-reveal data-reveal-delay="0">
-          <div class="tech-accent accent-blue" aria-hidden="true"></div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <div class="demo-frame" data-reveal data-reveal-delay="60">
+      <div class="demo-bar">
+        <span>An expert is not an artifact you archive. It is a thing you keep current.</span>
+        <button class="btn btn--primary" id="driftStart" type="button">Drift the data</button>
+      </div>
+      <div class="drift" id="drift">
+        <div>
+          <p class="expert-meta" style="margin-bottom:0.75rem">Training set</p>
+          <div class="chipset">
+            <span class="chip">Q1 tickets</span>
+            <span class="chip">Q2 tickets</span>
+            <span class="chip">Policy v3</span>
+            <span class="chip" data-chip="new">New policy v4</span>
           </div>
-          <h3>Task & Data Understanding</h3>
-          <p>The system reads your task description and examples to understand precisely what the target model needs to do.</p>
         </div>
-        <div class="tech-card spotlight-card" data-reveal data-reveal-delay="80">
-          <div class="tech-accent accent-purple" aria-hidden="true"></div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M7 2v2M17 2v2M7 20v2M17 20v2M2 7h2M2 17h2M20 7h2M20 17h2"/></svg>
-          </div>
-          <h3>Automated Model Creation</h3>
-          <p>Pelora produces a specialized model directly - no manual training pipeline, no infrastructure to manage, no repeated experimentation.</p>
-        </div>
-        <div class="tech-card spotlight-card" data-reveal data-reveal-delay="160">
-          <div class="tech-accent accent-teal" aria-hidden="true"></div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          </div>
-          <h3>Ready to Evaluate & Deploy</h3>
-          <p>The resulting model can be tested on real data and deployed immediately - or iterated on rapidly if requirements change.</p>
+        <div class="drift-arrow" aria-hidden="true"><span>regenerate</span></div>
+        <div class="expert-tile">
+          <span class="expert-name">Support triage expert <span data-out="version">v4</span></span>
+          <span class="expert-meta" data-out="state">Verified and live</span>
+          <span class="expert-meta" data-out="built">built on last month data</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ======= USE CASES ======= -->
-  <section class="section section-alt" id="use-cases">
-    <div class="container">
-      <div class="section-center">
-        <span class="eyebrow" data-reveal>Use Cases</span>
-        <h2 class="section-title" data-reveal>For teams that need many specialized models.</h2>
-      </div>
-      <div class="cards-grid" style="margin-top: 56px;">
-        <div class="card spotlight-card" data-reveal data-reveal-delay="0">
-          <span class="card-tag">Research</span>
-          <h3>Research Teams</h3>
-          <p>Any team building AI on top of domain-specific data - whether in science, engineering, or industry - can get a specialized model without a full training infrastructure.</p>
-        </div>
-        <div class="card spotlight-card" data-reveal data-reveal-delay="80">
-          <span class="card-tag">Enterprise</span>
-          <h3>Enterprise AI</h3>
-          <p>Create models specialized for internal documents, customer support, compliance, legal workflows, or proprietary knowledge.</p>
-        </div>
-        <div class="card spotlight-card" data-reveal data-reveal-delay="160">
-          <span class="card-tag">AI Labs</span>
-          <h3>AI Labs & Foundations</h3>
-          <p>Accelerate experimentation and reduce the overhead of producing specialized models across many tasks and benchmarks.</p>
-        </div>
-      </div>
+    <p class="demo-note" data-reveal>
+      This is a simulation, not a live model. The timings, hardware and costs shown are the figures
+      from our own runs, replayed in the browser. Pelora does not expose a public generation
+      endpoint - we walk through the real thing with you on a call.
+    </p>
+    <div class="actions" data-reveal style="margin-top:2rem">
+      <a class="btn btn--primary" href="mailto:info@pelora-ai.com?subject=Live%20demo">Book a live demo <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ======= RESEARCH ======= -->
-  <section class="section" id="research">
-    <div class="container">
-      <div class="section-center">
-        <span class="eyebrow" data-reveal>Why Us</span>
-        <h2 class="section-title" data-reveal>Built by AI researchers and ML systems builders.</h2>
-        <p class="section-text" data-reveal>
-          Pelora is founded by Ben Shapira and Roi Cohen. Our work spans language models, model reliability,
-          biomedical AI, adversarial robustness, and production ML systems. We combine frontier AI research
-          with practical experience building and evaluating real-world AI systems.
+<!-- ============================================================== market -->
+<section class="band" id="who">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Who it is for</p>
+    <h2 class="statement statement--wide" data-reveal style="margin-bottom:3rem">
+      Every serious agent company at scale becomes a model factory.
+    </h2>
+    <div class="cards">
+      <article class="card" data-reveal>
+        <span class="card-kicker">01</span>
+        <h3 class="card-title">Teams building agents</h3>
+        <p class="card-body">
+          Internal or product workflows. Stop paying the context bill on every call and put what
+          the agent needs to know into weights you own.
         </p>
-      </div>
-
-      <div class="stats-grid" data-reveal data-reveal-delay="80">
-        <div class="stat-card">
-          <div class="stat-value">
-            <span class="stat-number" data-count="12">0</span><span class="stat-suffix">+</span>
-          </div>
-          <span class="stat-label">Publications</span>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">
-            <span class="stat-number" data-count="6">0</span>
-          </div>
-          <span class="stat-label">Top-Tier Venues</span>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">
-            <span class="stat-number" data-count="2">0</span>
-          </div>
-          <span class="stat-label">Industrial Research Labs</span>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">
-            <span class="stat-number" data-count="10">0</span><span class="stat-suffix">+</span>
-          </div>
-          <span class="stat-label">Years Combined Experience</span>
-        </div>
-      </div>
-
-      <div class="publications-section" data-reveal>
-        <h3 class="publications-heading">Selected Research</h3>
-        <ul class="publications-list" role="list">
-          <li class="pub-item">
-            <span class="pub-venue">NeurIPS 2024</span>
-            <a href="https://nips.cc/virtual/2024/poster/94825" class="pub-title" target="_blank" rel="noopener">I Don't Know: Explicit Modeling of Uncertainty with an [IDK] Token</a>
-            <span class="pub-authors">Roi Cohen, Konstantin Dobler, Eden Biran, Gerard de Melo</span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-venue">TACL 2024</span>
-            <a href="https://aclanthology.org/2024.tacl-1.16/" class="pub-title" target="_blank" rel="noopener">Evaluating the Ripple Effects of Knowledge Editing in Language Models</a>
-            <span class="pub-authors">Roi Cohen, Eden Biran, Ori Yoran, Amir Globerson, Mor Geva</span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-venue">EMNLP 2023</span>
-            <a href="https://aclanthology.org/2023.emnlp-main.778/" class="pub-title" target="_blank" rel="noopener">LM vs LM: Detecting Factual Errors via Cross-Examination</a>
-            <span class="pub-authors">Roi Cohen, May Hamri, Mor Geva, Amir Globerson</span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-venue">Findings EMNLP 2025</span>
-            <a href="https://arxiv.org/abs/2505.20487" class="pub-title" target="_blank" rel="noopener">InFact: Informativeness Alignment for Improved LLM Factuality</a>
-            <span class="pub-authors">Roi Cohen, Russa Biswas, Gerard de Melo</span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-venue">arXiv 2024</span>
-            <a href="https://arxiv.org/abs/2410.22367" class="pub-title" target="_blank" rel="noopener">MAMMAL: Molecular Aligned Multi-Modal Architecture and Language</a>
-            <span class="pub-authors">Yoel Shoshan et al., including Ben Shapira</span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-venue">arXiv 2025</span>
-            <a href="https://arxiv.org/abs/2510.01428" class="pub-title" target="_blank" rel="noopener">BioVERSE: Representation Alignment of Biomedical Modalities to LLMs</a>
-            <span class="pub-authors">Ching-Huei Tsou et al., including Ben Shapira</span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-venue">Under Review</span>
-            <a href="https://openreview.net/forum?id=bso6S1JNOd" class="pub-title" target="_blank" rel="noopener">StyleAT: Defending Face Recognition Against Semantic Attacks</a>
-            <span class="pub-authors">Ben Shapira, Roi Cohen, Shang-Tse Chen, Mahmood Sharif</span>
-          </li>
-          <li class="pub-item">
-            <span class="pub-venue">Under Review</span>
-            <a href="https://openreview.net/forum?id=Jlc4IV3qr4" class="pub-title" target="_blank" rel="noopener">Knowledgeless Language Models: Decoupling Linguistic Competence and Factual Knowledge</a>
-            <span class="pub-authors">Roi Cohen, Yvan Carre, Nick Lechtenborger et al.</span>
-          </li>
-        </ul>
-      </div>
+      </article>
+      <article class="card" data-reveal data-reveal-delay="80">
+        <span class="card-kicker">02</span>
+        <h3 class="card-title">Agent providers</h3>
+        <p class="card-body">
+          Embed the factory. Give every customer trained experts on their own data without
+          building a research team to do it.
+        </p>
+      </article>
+      <article class="card" data-reveal data-reveal-delay="160">
+        <span class="card-kicker">03</span>
+        <h3 class="card-title">Data-sovereign organizations</h3>
+        <p class="card-body">
+          Banks, security and government. Experts are generated and run on your GPUs inside your
+          perimeter. Nothing leaves.
+        </p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ======= FOUNDERS ======= -->
-  <section class="section section-alt" id="founders">
-    <div class="container">
-      <div class="section-center">
-        <span class="eyebrow" data-reveal>The Team</span>
-        <h2 class="section-title" data-reveal>Meet the Founders</h2>
+<!-- ============================================================ research -->
+<section class="band on-dark" id="research">
+  <div class="wrap">
+    <div class="split" style="margin-bottom:3rem">
+      <div>
+        <p class="eyebrow" data-reveal>Research</p>
+        <h2 class="statement" data-reveal>The work behind the engine is public.</h2>
       </div>
-
-      <div class="founders-grid">
-        <div class="founder-card spotlight-card" data-reveal data-reveal-direction="left">
-          <div class="founder-photo-wrap">
-            <div class="founder-glow" aria-hidden="true"></div>
-            <img src="imgs/Ben.png" alt="Ben Shapira, Co-Founder" class="founder-photo" loading="lazy">
-          </div>
-          <div class="founder-info">
-            <h3 class="founder-name">Ben Shapira</h3>
-            <span class="founder-role">Co-Founder · AI Researcher</span>
-            <p class="founder-bio">
-              M.Sc. in Computer Science from Tel Aviv University. Research Scientist at IBM Research working on
-              biomedical and multimodal AI. Previously built production ML, NLP, and LLM systems at AlgoSec.
-              Former intelligence analyst at IDF Unit 8200.
-            </p>
-            <div class="founder-links">
-              <a href="https://www.linkedin.com/in/benshapiraa/" class="founder-link" target="_blank" rel="noopener" aria-label="Ben Shapira on LinkedIn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                LinkedIn
-              </a>
-              <a href="https://scholar.google.com/citations?user=-m0Uq80AAAAJ&hl=en" class="founder-link" target="_blank" rel="noopener" aria-label="Ben Shapira on Google Scholar">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
-                Scholar
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="founder-card spotlight-card" data-reveal data-reveal-direction="right">
-          <div class="founder-photo-wrap">
-            <div class="founder-glow" aria-hidden="true"></div>
-            <img src="imgs/Roi.png" alt="Roi Cohen, Co-Founder" class="founder-photo" loading="lazy">
-          </div>
-          <div class="founder-info">
-            <h3 class="founder-name">Roi Cohen</h3>
-            <span class="founder-role">Co-Founder · AI Researcher</span>
-            <p class="founder-bio">
-              PhD candidate in AI at HPI & TU Berlin, researching LLM reliability, factuality, and model behavior.
-              Former IBM Research and Microsoft Research intern. Published at NeurIPS, EMNLP, TACL, and EACL.
-              Former researcher at IDF Unit 8200.
-            </p>
-            <div class="founder-links">
-              <a href="https://www.linkedin.com/in/roicohen9/" class="founder-link" target="_blank" rel="noopener" aria-label="Roi Cohen on LinkedIn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                LinkedIn
-              </a>
-              <a href="https://scholar.google.com/citations?user=TcPUXJYAAAAJ&hl=en" class="founder-link" target="_blank" rel="noopener" aria-label="Roi Cohen on Google Scholar">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
-                Scholar
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= CONTACT ======= -->
-  <section class="section contact-section" id="contact">
-    <div class="contact-orb contact-orb-1" aria-hidden="true"></div>
-    <div class="contact-orb contact-orb-2" aria-hidden="true"></div>
-    <div class="container contact-inner">
-      <span class="eyebrow" data-reveal>Get in Touch</span>
-      <h2 class="section-title" data-reveal>Building many specialized AI models?</h2>
-      <p class="section-text" data-reveal>
-        We are speaking with AI teams, research labs, and companies that repeatedly train or customize models.
-        If this sounds like you, we'd love to talk.
+      <p class="lede" data-reveal data-reveal-delay="80">
+        Pelora comes out of published research on language model reliability, factuality,
+        knowledge editing and adversarial robustness, at NeurIPS, TACL and EMNLP.
       </p>
-      <a href="mailto:info@pelora-ai.com" class="btn btn-primary btn-lg" data-reveal data-reveal-delay="80">
-        Contact Pelora
-      </a>
     </div>
-  </section>
 
-  <!-- ======= FOOTER ======= -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <a href="#hero" class="footer-logo" aria-label="Back to top">
-        <img src="imgs/logo/pelora-logo-white.png" alt="Pelora" height="50" loading="lazy">
-      </a>
-      <p class="footer-copy">&copy; 2026 Pelora. All rights reserved.</p>
-      <a href="mailto:info@pelora-ai.com" class="footer-email">info@pelora-ai.com</a>
+    <ul class="pubs" role="list" data-reveal>
+      <li class="pub">
+        <span class="pub-venue">NeurIPS 2024</span>
+        <a class="pub-title" href="https://nips.cc/virtual/2024/poster/94825" target="_blank" rel="noopener">I Don't Know: Explicit Modeling of Uncertainty with an [IDK] Token</a>
+        <span class="pub-authors">Roi Cohen, Konstantin Dobler, Eden Biran, Gerard de Melo</span>
+      </li>
+      <li class="pub">
+        <span class="pub-venue">TACL 2024</span>
+        <a class="pub-title" href="https://aclanthology.org/2024.tacl-1.16/" target="_blank" rel="noopener">Evaluating the Ripple Effects of Knowledge Editing in Language Models</a>
+        <span class="pub-authors">Roi Cohen, Eden Biran, Ori Yoran, Amir Globerson, Mor Geva</span>
+      </li>
+      <li class="pub">
+        <span class="pub-venue">EMNLP 2023</span>
+        <a class="pub-title" href="https://aclanthology.org/2023.emnlp-main.778/" target="_blank" rel="noopener">LM vs LM: Detecting Factual Errors via Cross-Examination</a>
+        <span class="pub-authors">Roi Cohen, May Hamri, Mor Geva, Amir Globerson</span>
+      </li>
+      <li class="pub">
+        <span class="pub-venue">Findings EMNLP 2025</span>
+        <a class="pub-title" href="https://arxiv.org/abs/2505.20487" target="_blank" rel="noopener">InFact: Informativeness Alignment for Improved LLM Factuality</a>
+        <span class="pub-authors">Roi Cohen, Russa Biswas, Gerard de Melo</span>
+      </li>
+      <li class="pub">
+        <span class="pub-venue">arXiv 2024</span>
+        <a class="pub-title" href="https://arxiv.org/abs/2410.22367" target="_blank" rel="noopener">MAMMAL: Molecular Aligned Multi-Modal Architecture and Language</a>
+        <span class="pub-authors">Yoel Shoshan et al., including Ben Shapira</span>
+      </li>
+      <li class="pub">
+        <span class="pub-venue">arXiv 2025</span>
+        <a class="pub-title" href="https://arxiv.org/abs/2510.01428" target="_blank" rel="noopener">BioVERSE: Representation Alignment of Biomedical Modalities to LLMs</a>
+        <span class="pub-authors">Ching-Huei Tsou et al., including Ben Shapira</span>
+      </li>
+      <li class="pub">
+        <span class="pub-venue">Under review</span>
+        <a class="pub-title" href="https://openreview.net/forum?id=bso6S1JNOd" target="_blank" rel="noopener">StyleAT: Defending Face Recognition Against Semantic Attacks</a>
+        <span class="pub-authors">Ben Shapira, Roi Cohen, Shang-Tse Chen, Mahmood Sharif</span>
+      </li>
+      <li class="pub">
+        <span class="pub-venue">Under review</span>
+        <a class="pub-title" href="https://openreview.net/forum?id=Jlc4IV3qr4" target="_blank" rel="noopener">Knowledgeless Language Models: Decoupling Linguistic Competence and Factual Knowledge</a>
+        <span class="pub-authors">Roi Cohen, Yvan Carre, Nick Lechtenborger et al.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================ team -->
+<section class="band" id="team">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal style="margin-bottom:3.5rem">Team</p>
+
+    <div class="people">
+      <article class="person" data-reveal>
+        <img class="person-photo" src="/imgs/Roi.png" alt="Roi Cohen" width="240" height="240" loading="lazy">
+        <div>
+          <p class="person-role">Co-Founder and CEO</p>
+          <h3 class="person-name">Roi Cohen</h3>
+        </div>
+        <p class="person-bio">
+          PostDoc at Stanford. PhD candidate at HPI and TU Berlin, with excellence prizes in both
+          his PhD and his Masters. Previously IBM Research, Microsoft Research and Superhuman
+          Research. Former IDF Unit 8200.
+        </p>
+        <p class="person-links">
+          <a href="https://www.linkedin.com/in/roicohen9/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=TcPUXJYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        </p>
+      </article>
+
+      <article class="person" data-reveal data-reveal-delay="80">
+        <img class="person-photo" src="/imgs/Ben.png" alt="Ben Shapira" width="240" height="240" loading="lazy">
+        <div>
+          <p class="person-role">Co-Founder and CTO</p>
+          <h3 class="person-name">Ben Shapira</h3>
+        </div>
+        <p class="person-bio">
+          M.Sc. in Computer Science from Tel Aviv University. AI researcher at IBM Research,
+          working on applied model training and deployment. Former IDF Unit 8200.
+        </p>
+        <p class="person-links">
+          <a href="https://www.linkedin.com/in/benshapiraa/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=-m0Uq80AAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        </p>
+      </article>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- ================================================================= faq -->
+<section class="band band--tight" id="faq">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow" data-reveal>Questions</p>
+    <div class="faq" data-reveal data-reveal-delay="60">
+      <details>
+        <summary>How is this different from fine-tuning?</summary>
+        <p class="faq-body">
+          A fine-tune is a training run you schedule, staff and wait for. Ours is a generation
+          step measured in seconds. The comparison above is the honest version of the difference.
+        </p>
+      </details>
+      <details>
+        <summary>Who owns the resulting weights?</summary>
+        <p class="faq-body">
+          You do. Your data trains your experts, and they can be generated and served on your own
+          GPUs inside your perimeter. Nothing has to leave.
+        </p>
+      </details>
+      <details>
+        <summary>What happens when our data changes?</summary>
+        <p class="faq-body">
+          The expert is regenerated. When that costs seconds rather than hours, keeping experts
+          current stops being a project and becomes routine.
+        </p>
+      </details>
+      <details>
+        <summary>Can we see how it works underneath?</summary>
+        <p class="faq-body">
+          Publicly we describe the system at block-diagram level. The engine and the verification
+          design are available under deeper diligence and NDA.
+        </p>
+      </details>
+      <details>
+        <summary>Can we try it on our own data?</summary>
+        <p class="faq-body">
+          Yes, in a live session with us rather than through a public endpoint. Get in touch and
+          we will run your task together.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= closing -->
+<section class="band on-dark" id="contact">
+  <div class="wrap closing">
+    <p class="eyebrow" data-reveal>Talk to us</p>
+    <h2 class="closing-line" data-reveal>Use what AI has become - to make AI improve itself.</h2>
+    <div class="actions" data-reveal data-reveal-delay="80" style="margin-top:2.5rem">
+      <a class="btn btn--primary" href="mailto:info@pelora-ai.com">info@pelora-ai.com <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
+      <a class="btn btn--ghost" href="mailto:info@pelora-ai.com?subject=Design%20partner">Become a design partner</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <img src="/imgs/logo/pelora-logo-white.png" alt="Pelora" width="110" height="26">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/technology/">Technology</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#research">Research</a>
+        <a href="/#team">Team</a>
+        <a href="mailto:info@pelora-ai.com">Contact</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Pelora. Delaware C-corp, team in Berlin.</span>
+      <span>info@pelora-ai.com</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/demo.js" defer></script>
 </body>
 </html>
