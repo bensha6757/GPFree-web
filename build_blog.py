@@ -59,7 +59,6 @@ NAV = """<a class="skip-link" href="#main">Skip to content</a>
     </button>
     <ul class="nav-links" id="navLinks" role="list">
       <li><a href="/technology/">Technology</a></li>
-      <li><a href="/#research">Research</a></li>
       <li><a href="/team/">Team</a></li>
       <li><a href="/blog/" aria-current="page">Blog</a></li>
       <li><a href="mailto:info@pelora-ai.com" class="nav-cta">Talk to us</a></li>
@@ -74,7 +73,6 @@ FOOTER = """<footer class="footer">
       <nav class="footer-nav" aria-label="Footer">
         <a href="/technology/">Technology</a>
         <a href="/blog/">Blog</a>
-        <a href="/#research">Research</a>
         <a href="/team/">Team</a>
         <a href="mailto:info@pelora-ai.com">Contact</a>
         <a href="/rss.xml">RSS</a>

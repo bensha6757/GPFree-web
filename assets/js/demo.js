@@ -77,7 +77,9 @@
     function step(now) {
       if (!running) return;
       if (!last) last = now;
-      var dt = (now - last) / 1000;
+      // Clamp the step so a backgrounded tab does not resume with a huge
+      // delta and skip the whole animation.
+      var dt = Math.min((now - last) / 1000, 0.1);
       last = now;
 
       simSeconds += dt * rate;
@@ -135,6 +137,33 @@
       if (startBtn) { startBtn.disabled = true; startBtn.textContent = 'Result shown'; }
     } else {
       paint();
+
+      // Run it the moment the reader reaches the section, so the comparison
+      // has played out by the time they have finished reading the heading.
+      // Observer first, with a scroll fallback for browsers that throttle it.
+      var armed = true;
+      var observer = null;
+
+      var maybeStart = function () {
+        if (!armed) return;
+        var box = race.getBoundingClientRect();
+        if (box.top > window.innerHeight * 0.7 || box.bottom < 0) return;
+        armed = false;
+        window.removeEventListener('scroll', maybeStart);
+        if (observer) observer.disconnect();
+        start();
+      };
+
+      if ('IntersectionObserver' in window) {
+        observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) maybeStart();
+          });
+        }, { threshold: 0.3 });
+        observer.observe(race);
+      }
+      window.addEventListener('scroll', maybeStart, { passive: true });
+      maybeStart();
     }
   }
 

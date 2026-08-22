@@ -108,8 +108,7 @@ The experts are generated from your data, the weights are yours, and for organiz
 cannot send data anywhere - banks, security, government - the whole loop runs on your own GPUs
 inside your own perimeter.
 
-Publicly we describe the system at block-diagram level. The engine internals and the verification
-design are available under deeper diligence and NDA.
+How any of it works underneath is available under diligence and NDA.
 
 ## The bet
 
