@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every serious agent company becomes a model factory - Pelora</title>
+<meta name="description" content="At production scale, agent teams stop calling frontier models for everything and start building small trained ones. The factory that produces those models is the scarce thing.">
+<link rel="canonical" href="https://pelora-ai.com/blog/every-serious-agent-company-becomes-a-model-factory/">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Pelora">
+<meta property="og:url" content="https://pelora-ai.com/blog/every-serious-agent-company-becomes-a-model-factory/">
+<meta property="og:title" content="Every serious agent company becomes a model factory - Pelora">
+<meta property="og:description" content="At production scale, agent teams stop calling frontier models for everything and start building small trained ones. The factory that produces those models is the scarce thing.">
+<meta property="og:image" content="https://pelora-ai.com/assets/og/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Every serious agent company becomes a model factory - Pelora">
+<meta name="twitter:description" content="At production scale, agent teams stop calling frontier models for everything and start building small trained ones. The factory that produces those models is the scarce thing.">
+<meta name="twitter:image" content="https://pelora-ai.com/assets/og/og.png">
+<link rel="icon" type="image/png" href="/imgs/logo/pelora-logo-icononly-color-zoom.png">
+<link rel="alternate" type="application/rss+xml" title="Pelora blog" href="/rss.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="wrap nav-inner">
+    <a href="/" class="nav-logo" aria-label="Pelora home">
+      <img src="/imgs/logo/pelora-logo-white.png" alt="Pelora" width="110" height="26">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="/technology/">Technology</a></li>
+      <li><a href="/blog/" aria-current="page">Blog</a></li>
+      <li><a href="/#research">Research</a></li>
+      <li><a href="mailto:info@pelora-ai.com" class="nav-cta">Talk to us</a></li>
+    </ul>
+  </div>
+</nav>
+<main id="main">
+<header class="band on-dark" style="padding-top:11rem;padding-bottom:3.5rem">
+  <div class="wrap">
+    <div class="article">
+      <p class="eyebrow" style="color:#b08968">Draft - not published, not indexed, awaiting review</p>
+      <h1 class="article-title">Every serious agent company becomes a model factory</h1>
+      <p class="article-meta">
+        <span>22 August 2026</span>
+        <span>Roi Cohen</span>
+        <span>5 min read</span>
+      </p>
+    </div>
+  </div>
+</header>
+
+<article class="band">
+  <div class="wrap">
+    <div class="article">
+      <div class="prose">
+<p>Agents demo beautifully and productionize badly. The gap between the two is where most of the
+engineering effort in this industry currently goes, and it has a recognizable shape. You build
+something that works, you put it in front of real traffic, and you hit a wall made of three
+things at once: latency, cost, and control.</p>
+<p>The wall is not a failure of the agent. It is a consequence of how the agent knows things.</p>
+<h2>The wall every agent hits</h2>
+<p>A foundation model knows everything public and nothing about your world. It has never seen your
+claims process, your ticket taxonomy, your internal policy document, or the seven ways your
+customers describe the same problem. So the standard fix is to tell it, on every single call.
+Retrieval, long context windows, few-shot examples, elaborate system prompts. The knowledge
+lives outside the model and gets re-injected at inference time, forever.</p>
+<p>This works until it does not. Every token of context is latency the user feels and money you pay
+again on the next call. Prompts become load-bearing infrastructure that nobody wants to touch.
+And when behavior is wrong, the fix is another paragraph of instruction rather than anything you
+can measure.</p>
+<p>The teams that hit this wall hardest are the ones with the most traffic, which is why the most
+sophisticated agent companies got there first.</p>
+<h2>What the leaders did about it</h2>
+<p>They have said publicly what they did. They started training their own models.</p>
+<p>Decagon's founders discussed this on
+<a href="https://a16z.com/podcast/how-enterprise-ai-really-gets-deployed/">a16z's podcast in July 2026</a>:
+the company has moved most of its inference to fine-tuned open-source models, decomposing agent
+conversations into discrete tasks that do not require a frontier model's full generality. Their
+stated drivers were latency and control over model behavior rather than cost alone. They have
+also described running a dedicated internal team that continuously trains new fine-tuned models
+and retires them as the open-source frontier moves.</p>
+<p>Glean published a similar story with more of the build sheet attached. Their agentic search model,
+<a href="https://www.glean.com/blog/waldo-launch">Waldo</a>, is post-trained on NVIDIA's Nemotron 3 Nano to
+handle search planning before a frontier model is invoked. They report roughly half the latency
+and a quarter fewer tokens with no quality regression. For the training itself they used
+<a href="https://thinkingmachines.ai/tinker/">Thinking Machines' Tinker</a> for LoRA-based fine-tuning,
+which let them adapt the model without operating distributed training infrastructure themselves.</p>
+<p>Read those two together and a pattern falls out. Both companies concluded that the way to make an
+agent fast, cheap, and predictable is to stop asking a general model to be a specialist at
+inference time, and instead produce a small model that already is one. Both ended up standing up
+an internal capability to manufacture those small models on an ongoing basis.</p>
+<p>That capability is a factory. Neither company set out to build one. Production made them.</p>
+<h2>The architecture is converging. The factory is not.</h2>
+<p>Here is the part that I think is underappreciated.</p>
+<p>The agent architecture itself is becoming consensus. An orchestrator that plans and routes, with
+small specialized models underneath handling the narrow, high-volume, well-defined work. You can
+now buy most of the pieces. NVIDIA ships open model families explicitly positioned for this shape
+of deployment, and Glean built on one. Fine-tuning as a managed service exists and works. The
+reference design is public and the components are commoditizing.</p>
+<p>So if the architecture is converging, what is actually scarce?</p>
+<p>It is not knowing that you should train small experts. It is being able to keep producing them.</p>
+<p>A fine-tuned model is a snapshot of a dataset on the day it was trained. Your policy changes and
+the snapshot is subtly wrong. A new product ships and the taxonomy grows a branch the model has
+never seen. A better base model comes out three months later and the honest response is to redo
+the work. Multiply that by every task an agent handles, then by every customer if you serve more
+than one, and the cost of the factory is not the first training run. It is the hundredth, and the
+fact that the hundredth arrives on a Tuesday when the team is busy.</p>
+<p>This is why Decagon staffing a standing research team to train and deprecate models is the most
+interesting detail in either story. That team is the moat, and it is also the tax. Most companies
+building agents cannot hire it, and the ones that can would rather spend those researchers on
+their actual product.</p>
+<h2>What we build</h2>
+<p>Pelora productizes the factory.</p>
+<p>Our engine is a hypernetwork. Give it labeled examples of a task - the inputs and the outputs you
+actually want - and it emits a trained LoRA expert for that task in a single forward pass. About
+13 seconds on a commodity GPU, against roughly 3 hours for the conventional fine-tuning run it
+replaces, and up to 100x cheaper. There is no training job to schedule and no accelerator fleet to
+hold.</p>
+<p>Two properties matter more than the speed.</p>
+<p>The first is verification. A generated expert is not trusted because it was generated. Every
+candidate is measured against held-out performance on its own task, and only candidates that clear
+that gate get cached and served. We have validated the engine on close to a thousand held-out
+tasks. Generated experts significantly outperform the base model, and match traditionally
+fine-tuned models at a fraction of the cost and latency.</p>
+<p>The second is what seconds do to the economics of staying current. When regeneration is cheap,
+an expert stops being an artifact you archive and becomes something you keep fresh. Data drifts,
+you regenerate. Policy changes, you regenerate. A better base model lands, and migration is a
+pass over the expert cache rather than a quarter of retraining. The snapshot problem stops being
+a problem because the snapshot is never old.</p>
+<p>The experts are generated from your data, the weights are yours, and for organizations that
+cannot send data anywhere - banks, security, government - the whole loop runs on your own GPUs
+inside your own perimeter.</p>
+<p>Publicly we describe the system at block-diagram level. The engine internals and the verification
+design are available under deeper diligence and NDA.</p>
+<h2>The bet</h2>
+<p>The bet is straightforward. If every agent company at scale ends up needing a model factory, and
+the agent architecture around it is converging on a common shape, then the factory is where the
+durable advantage sits. Building one in-house is a research organization. Buying one should be a
+platform.</p>
+<p>Use what AI has become - to make AI improve itself.</p>
+      </div>
+      <div class="author-cards"><div class="author-card"><img src="/imgs/Roi.png" alt="" width="56" height="56" loading="lazy"><div><div class="author-card-name">Roi Cohen</div><div class="author-card-role">Co-Founder and CEO</div></div></div></div>
+    </div>
+  </div>
+</article>
+
+<section class="band on-dark band--tight">
+  <div class="wrap closing">
+    <h2 class="statement statement--wide">Building agents that need to know your world.</h2>
+    <div class="actions" style="margin-top:2rem">
+      <a class="btn btn--primary" href="mailto:info@pelora-ai.com">Talk to us <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
+      <a class="btn btn--ghost" href="/blog/">More writing</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <img src="/imgs/logo/pelora-logo-white.png" alt="Pelora" width="110" height="26">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/technology/">Technology</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#research">Research</a>
+        <a href="/#team">Team</a>
+        <a href="mailto:info@pelora-ai.com">Contact</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Pelora. Delaware C-corp, team in Berlin.</span>
+      <span>info@pelora-ai.com</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>
