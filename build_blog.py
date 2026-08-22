@@ -81,7 +81,7 @@ FOOTER = """<footer class="footer">
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Pelora. Delaware C-corp, team in Berlin.</span>
+      <span>&copy; <span data-year>2026</span> Pelora.</span>
       <span>info@pelora-ai.com</span>
     </div>
   </div>
