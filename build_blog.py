@@ -58,6 +58,7 @@ NAV = """<a class="skip-link" href="#main">Skip to content</a>
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="/demo/">Demo</a></li>
       <li><a href="/technology/">Technology</a></li>
       <li><a href="/#research">Research</a></li>
       <li><a href="/team/">Team</a></li>
@@ -286,6 +287,7 @@ def render_rss(posts):
 def render_sitemap(posts):
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     urls = [(f"{SITE}/", today, "1.0"),
+            (f"{SITE}/demo/", today, "0.9"),
             (f"{SITE}/technology/", today, "0.8"),
             (f"{SITE}/team/", today, "0.6"),
             (f"{SITE}/blog/", today, "0.6")]
