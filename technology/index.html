@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Technology - Pelora</title>
-<meta name="description" content="How the Pelora orchestrator decides what its agent needs to know, commissions a trained expert for it in seconds, and keeps that expert current as your data moves.">
+<meta name="description" content="The Pelora agent works out what it needs to know and builds a specialist for it, in seconds rather than hours. Experts stay current as your data moves, on your infrastructure.">
 <link rel="canonical" href="https://pelora-ai.com/technology/">
 
 <meta property="og:type" content="article">
@@ -39,8 +39,9 @@
     </button>
     <ul class="nav-links" id="navLinks" role="list">
       <li><a href="/technology/" aria-current="page">Technology</a></li>
-      <li><a href="/blog/">Blog</a></li>
       <li><a href="/#research">Research</a></li>
+      <li><a href="/team/">Team</a></li>
+      <li><a href="/blog/">Blog</a></li>
       <li><a href="mailto:info@pelora-ai.com" class="nav-cta">Talk to us</a></li>
     </ul>
   </div>
@@ -55,9 +56,8 @@
       The agent works out what it needs to know. Then it builds it.
     </h1>
     <p class="lede" data-reveal data-reveal-delay="80" style="margin-top:2rem">
-      Most agent platforms give you an orchestrator that calls models. Ours runs a factory. When a
-      job needs understanding the agent does not have, it commissions a specialist, waits about
-      13 seconds, and gets back to work.
+      Most agent platforms give you an orchestrator that calls models. Ours builds them. When a
+      job needs understanding the agent does not have, a specialist for it exists seconds later.
     </p>
   </div>
 </section>
@@ -70,14 +70,14 @@
     </div>
     <div data-reveal data-reveal-delay="80">
       <p class="lede">
-        This is the part that has to be autonomous, and it is. The orchestrator recognizes when a
-        piece of work falls outside what its current experts cover, commissions one for it, routes
-        the work there, and keeps or retires it based on how it performs in production.
+        This is the part that has to be autonomous, and it is. The agent works out where its
+        current experts fall short and does something about it, without being asked and without
+        anyone deciding in advance which experts should exist.
       </p>
       <p class="lede" style="margin-top:1.5rem">
-        Nobody files a ticket. Nobody schedules a training run. The system that decides an expert
-        is needed is the same system that can produce one, which is the only reason producing them
-        on demand is worth anything.
+        Nobody files a ticket. Nobody schedules a training run. The system that knows an expert is
+        needed is the same system that can produce one, which is the only reason producing them on
+        demand is worth anything.
       </p>
     </div>
   </div>
@@ -93,11 +93,11 @@
       <p class="lede">
         Conventional specialization means assembling a dataset, configuring a run, holding
         accelerators for hours, and evaluating whatever comes out. The engine replaces that loop
-        entirely: your data goes in, a trained expert comes out, in a single pass.
+        entirely. Your data goes in and a trained expert comes out, in seconds rather than hours.
       </p>
       <p class="lede" style="margin-top:1.5rem">
-        Your data can be almost anything. A labeled task, an unlabeled corpus, a body of internal
-        knowledge. It does not have to be shaped into a training set first.
+        Your data can be almost anything. A task, a corpus, a body of internal knowledge. It does
+        not have to be shaped into a training set first.
       </p>
       <p class="lede" style="margin-top:1.5rem">
         Experts are validated before they are used. That runs behind the scenes and you should
@@ -131,18 +131,17 @@
   <div class="wrap split split--sticky">
     <div>
       <p class="eyebrow" data-reveal>04</p>
-      <h2 class="statement" data-reveal>Next: the shape of the expert, not just its weights.</h2>
+      <h2 class="statement" data-reveal>Next: experts that fit the job.</h2>
     </div>
     <div data-reveal data-reveal-delay="80">
       <p class="lede">
-        Today the engine produces a trained expert for a task. The architecture of that expert is
-        a fixed starting point.
+        Producing an expert is the first problem. Producing the right one for the job in front of
+        it is the next.
       </p>
       <p class="lede" style="margin-top:1.5rem">
-        Where we are taking it next is choosing that architecture per task as well - how large the
-        expert needs to be, and how it is put together, tuned to the quality the job actually
-        demands and the cost you want to pay for it. Some tasks deserve more model than others,
-        and almost nobody has the time to work out which.
+        Some work deserves more than other work, and almost nobody has time to sit and decide
+        which. That is where we are taking this: better where it matters, cheaper where it does
+        not, without anyone tuning it by hand.
       </p>
     </div>
   </div>
@@ -175,8 +174,7 @@
       Publicly we describe the system at block-diagram level.
     </h2>
     <p class="lede" data-reveal data-reveal-delay="80" style="margin-top:1.75rem">
-      The engine, the orchestration policy and the validation design are available under deeper
-      diligence and NDA.
+      How any of it actually works is available under deeper diligence and NDA.
     </p>
     <div class="actions" data-reveal data-reveal-delay="140" style="margin-top:2.5rem">
       <a class="btn btn--primary" href="mailto:info@pelora-ai.com?subject=Technical%20conversation">Start a technical conversation <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
@@ -195,7 +193,7 @@
         <a href="/technology/">Technology</a>
         <a href="/blog/">Blog</a>
         <a href="/#research">Research</a>
-        <a href="/#team">Team</a>
+        <a href="/team/">Team</a>
         <a href="mailto:info@pelora-ai.com">Contact</a>
         <a href="/rss.xml">RSS</a>
       </nav>

@@ -87,7 +87,7 @@ their actual product.
 Pelora productizes the factory.
 
 Our engine takes your data - a labeled task, an unlabeled corpus, a body of internal knowledge -
-and emits a trained expert for it in a single pass. About 13 seconds on a commodity GPU, against
+and emits a trained expert for it. About 13 seconds on a commodity GPU, against
 roughly 3 hours for the conventional fine-tuning run it replaces, and up to 100x cheaper. There is
 no training job to schedule and no accelerator fleet to hold.
 
