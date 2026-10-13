@@ -14,8 +14,10 @@ Posts are markdown with a YAML-ish frontmatter block:
     draft: true
     ---
 
-Drafts are rendered to their own page so they can be reviewed, but are kept
-out of the blog index, the RSS feed and the sitemap, and carry a noindex tag.
+Drafts are not built by default, so they never reach the public site. To
+review one locally, build with --drafts; do not commit that output.
+
+    python3 build_blog.py --drafts
 
 Requires the `markdown` package:  pip install markdown
 """
@@ -58,7 +60,6 @@ NAV = """<a class="skip-link" href="#main">Skip to content</a>
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="/technology/">Technology</a></li>
       <li><a href="/team/">Team</a></li>
       <li><a href="/blog/" aria-current="page">Blog</a></li>
       <li><a href="mailto:info@pelora-ai.com" class="nav-cta">Talk to us</a></li>
@@ -71,7 +72,6 @@ FOOTER = """<footer class="footer">
     <div class="footer-top">
       <img src="/imgs/logo/pelora-logo-white.png" alt="Pelora" width="110" height="26">
       <nav class="footer-nav" aria-label="Footer">
-        <a href="/technology/">Technology</a>
         <a href="/blog/">Blog</a>
         <a href="/team/">Team</a>
         <a href="mailto:info@pelora-ai.com">Contact</a>
@@ -197,7 +197,7 @@ def render_post(post):
 
 <section class="band on-dark band--tight">
   <div class="wrap closing">
-    <h2 class="statement statement--wide">Building agents that need to know your world.</h2>
+    <h2 class="statement statement--wide">Talk to us.</h2>
     <div class="actions" style="margin-top:2rem">
       <a class="btn btn--primary" href="mailto:info@pelora-ai.com">Talk to us <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
       <a class="btn btn--ghost" href="/blog/">More writing</a>
@@ -228,15 +228,14 @@ def render_index(posts):
         body = '<p class="lede">The first posts are on their way.</p>'
 
     page = head("Blog - Pelora",
-                "Writing from the Pelora team on agents, model factories and what happens "
-                "when specialization stops being a training run.",
+                "Writing from the Pelora team.",
                 f"{SITE}/blog/")
     page += f"""
 <main id="main">
 <section class="band on-dark" style="padding-top:12rem;padding-bottom:4rem">
   <div class="wrap">
     <p class="eyebrow">Blog</p>
-    <h1 class="statement statement--wide" style="font-size:var(--step-4)">Notes from the factory floor.</h1>
+    <h1 class="statement statement--wide" style="font-size:var(--step-4)">Notes from the lab.</h1>
   </div>
 </section>
 
@@ -269,7 +268,7 @@ def render_rss(posts):
   <channel>
     <title>Pelora</title>
     <link>{SITE}/blog/</link>
-    <description>Writing from the Pelora team on agents, model factories and what happens when specialization stops being a training run.</description>
+    <description>Writing from the Pelora team.</description>
     <language>en</language>
     <lastBuildDate>{built}</lastBuildDate>
     <atom:link href="{SITE}/rss.xml" rel="self" type="application/rss+xml"/>
@@ -284,7 +283,6 @@ def render_rss(posts):
 def render_sitemap(posts):
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     urls = [(f"{SITE}/", today, "1.0"),
-            (f"{SITE}/technology/", today, "0.8"),
             (f"{SITE}/team/", today, "0.6"),
             (f"{SITE}/blog/", today, "0.6")]
     urls += [(p["url"], p["dt"].strftime("%Y-%m-%d"), "0.5") for p in posts]
@@ -320,8 +318,9 @@ def main():
     posts.sort(key=lambda p: p["dt"], reverse=True)
 
     published = [p for p in posts if not p["draft"]]
+    rendered = posts if "--drafts" in sys.argv else published
 
-    for post in posts:
+    for post in rendered:
         render_post(post)
 
     render_index(published)
@@ -329,7 +328,8 @@ def main():
     render_sitemap(published)
 
     for post in posts:
-        print(f"  {'draft ' if post['draft'] else 'live  '} /blog/{post['slug']}/")
+        state = "live  " if not post["draft"] else ("draft " if post in rendered else "held  ")
+        print(f"  {state} /blog/{post['slug']}/")
     print(f"\n{len(published)} published, {len(posts) - len(published)} draft")
 
 

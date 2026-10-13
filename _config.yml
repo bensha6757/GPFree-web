@@ -1,0 +1,6 @@
+# GitHub Pages runs Jekyll over this repository. Keep the blog sources and the
+# build tooling out of the published site: Jekyll would otherwise render
+# posts/*.md (drafts included) into public pages.
+exclude:
+  - posts
+  - build_blog.py

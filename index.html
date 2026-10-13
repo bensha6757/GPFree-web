@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pelora - Changing the way we build AI</title>
-<meta name="description" content="Pelora is building a second-order AI: a model that understands models, and builds new ones from scratch.">
+<meta name="description" content="Pelora is a research lab building second-order AI.">
 <link rel="canonical" href="https://pelora-ai.com/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pelora">
 <meta property="og:url" content="https://pelora-ai.com/">
 <meta property="og:title" content="Pelora - Changing the way we build AI">
-<meta property="og:description" content="Pelora is building a second-order AI: a model that understands models, and builds new ones from scratch.">
+<meta property="og:description" content="Pelora is a research lab building second-order AI.">
 <meta property="og:image" content="https://pelora-ai.com/assets/og/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pelora - Changing the way we build AI">
-<meta name="twitter:description" content="Pelora is building a second-order AI: a model that understands models, and builds new ones from scratch.">
+<meta name="twitter:description" content="Pelora is a research lab building second-order AI.">
 <meta name="twitter:image" content="https://pelora-ai.com/assets/og/og.png">
 
 <link rel="icon" type="image/png" href="/imgs/logo/pelora-logo-icononly-color-zoom.png">
@@ -43,7 +43,6 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="/technology/">Technology</a></li>
       <li><a href="/team/">Team</a></li>
       <li><a href="/blog/">Blog</a></li>
       <li><a href="mailto:info@pelora-ai.com" class="nav-cta">Talk to us</a></li>
@@ -53,164 +52,28 @@
 
 <main id="main">
 
-<!-- ================================================================ hero -->
 <section class="hero on-dark">
   <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <h1 class="hero-title" data-reveal data-reveal-delay="60">Pelora is changing the way we build AI.</h1>
-    <p class="hero-sub" data-reveal data-reveal-delay="120">
-      A second-order AI that builds new models from scratch - live, while you talk to it.
-    </p>
+    <p class="hero-sub" data-reveal data-reveal-delay="120">A research lab building second-order AI.</p>
     <div class="actions" data-reveal data-reveal-delay="180">
       <a class="btn btn--primary" href="mailto:info@pelora-ai.com">Talk to us <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
-      <a class="btn btn--ghost" href="#demo">See it work</a>
-    </div>
-    <p class="cycler" data-reveal data-reveal-delay="240">
-      <span>A model made of</span>
-      <span class="cycler-slot" data-cycler>
-        <span class="cycler-word">your codebase</span>
-        <span class="cycler-word">your claims process</span>
-        <span class="cycler-word">your protocols</span>
-        <span class="cycler-word">your world</span>
-      </span>
-    </p>
-  </div>
-</section>
-
-<!-- ================================================================ idea -->
-<section class="band" id="idea">
-  <div class="wrap split split--sticky">
-    <div>
-      <p class="eyebrow" data-reveal>The idea</p>
-      <h2 class="statement" data-reveal>Even at the frontier, building models is still a human craft.</h2>
-    </div>
-    <div data-reveal data-reveal-delay="80">
-      <p class="lede">
-        Architectures are chosen through experience and experiment, and much of why a model works
-        remains beyond anyone's view.
-      </p>
-      <p class="lede" style="margin-top:1.5rem">
-        We are building a meta frontier model that truly understands models - and builds new
-        frontier AI from scratch.
-      </p>
     </div>
   </div>
 </section>
 
-<!-- ================================================================ demo -->
-<section class="band on-dark" id="demo">
+<section class="band" id="approach">
   <div class="wrap">
-    <p class="eyebrow" data-reveal>The difference, at speed</p>
-    <h2 class="statement statement--wide" data-reveal style="margin-bottom:2.5rem">
-      One model. 13 seconds against 3 hours.
-    </h2>
-
-    <div class="demo-frame" data-reveal data-reveal-delay="60">
-      <div class="demo-bar">
-        <span>Same task. Two ways to get a model for it.</span>
-        <span class="actions">
-          <span id="raceLapse" hidden><strong>Time-lapse</strong></span>
-          <button class="btn btn--primary" id="raceStart" type="button">Start the run</button>
-          <button class="btn btn--ghost" id="raceReset" type="button" hidden>Reset</button>
-        </span>
-      </div>
-
-      <div class="race" id="race">
-        <div class="lane lane--pelora" data-lane="pelora">
-          <div class="lane-head">
-            <span class="lane-name">Pelora</span>
-          </div>
-          <span class="track"><span class="track-fill"></span></span>
-          <dl class="readout">
-            <div><dt>Elapsed</dt><dd data-out="time">0.0s</dd></div>
-            <div><dt>Cost</dt><dd data-out="cost">$0.000</dd></div>
-            <div><dt>Progress</dt><dd data-out="pct">0.00%</dd></div>
-          </dl>
-          <p class="lane-status"><span class="dot" aria-hidden="true"></span><span class="label">Ready</span></p>
-        </div>
-
-        <div class="lane" data-lane="conventional">
-          <div class="lane-head">
-            <span class="lane-name">Conventional fine-tune</span>
-          </div>
-          <span class="track"><span class="track-fill"></span></span>
-          <dl class="readout">
-            <div><dt>Elapsed</dt><dd data-out="time">0.0s</dd></div>
-            <div><dt>Cost</dt><dd data-out="cost">$0.00</dd></div>
-            <div><dt>Progress</dt><dd data-out="pct">0.00%</dd></div>
-          </dl>
-          <p class="lane-status"><span class="dot" aria-hidden="true"></span><span class="label">Ready</span></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="actions" data-reveal style="margin-top:2rem">
-      <a class="btn btn--primary" href="mailto:info@pelora-ai.com?subject=Live%20demo">Book a live demo <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
-    </div>
+    <h2 class="closing-line" data-reveal>Use what AI has become - to make AI improve itself.</h2>
   </div>
 </section>
 
-<!-- ======================================================== what you get -->
-<section class="band" id="who">
+<section class="band on-dark" id="contact">
   <div class="wrap">
-    <p class="eyebrow" data-reveal>What you get</p>
-    <h2 class="statement statement--wide" data-reveal style="margin-bottom:3rem">
-      Every model it produces is made of its task.
-    </h2>
-    <ul class="proof" role="list" data-reveal data-reveal-delay="60">
-      <li class="proof-item">
-        <span class="proof-figure">Better</span>
-        <span class="proof-label">outputs, faithful to the people and the work they come from</span>
-      </li>
-      <li class="proof-item">
-        <span class="proof-figure">Hundreds of times smaller</span>
-        <span class="proof-label">than a frontier model, running with almost no context</span>
-      </li>
-      <li class="proof-item">
-        <span class="proof-figure">Seconds</span>
-        <span class="proof-label">to build, with nothing to engineer</span>
-      </li>
-      <li class="proof-item">
-        <span class="proof-figure">Yours</span>
-        <span class="proof-label">on your own hardware, nothing leaves</span>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============================================================== vision -->
-<section class="band on-dark" id="vision">
-  <div class="wrap split">
-    <div>
-      <p class="eyebrow" data-reveal>Where it goes</p>
-      <h2 class="statement" data-reveal>It does not stop at tasks we already know how to solve.</h2>
-    </div>
-    <p class="lede" data-reveal data-reveal-delay="80">
-      With enough training and experimenting, it may reach models that solve problems that have
-      never been solved.
-    </p>
-  </div>
-</section>
-
-<!-- ================================================================= now -->
-<section class="band" id="now">
-  <div class="wrap">
-    <p class="eyebrow" data-reveal>Now</p>
     <h2 class="statement statement--wide" data-reveal>The first version is already working.</h2>
     <div class="actions" data-reveal data-reveal-delay="80" style="margin-top:2.5rem">
-      <a class="btn btn--primary" href="mailto:info@pelora-ai.com?subject=See%20it%20running">See it running <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
-      <a class="btn btn--ghost" href="/team/">Meet the team</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= closing -->
-<section class="band on-dark" id="contact">
-  <div class="wrap closing">
-    <p class="eyebrow" data-reveal>Talk to us</p>
-    <h2 class="closing-line" data-reveal>Use what AI has become - to make AI improve itself.</h2>
-    <div class="actions" data-reveal data-reveal-delay="80" style="margin-top:2.5rem">
-      <a class="btn btn--primary" href="mailto:info@pelora-ai.com">info@pelora-ai.com <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
+      <a class="btn btn--primary" href="mailto:info@pelora-ai.com">Talk to us <span class="btn-arrow" aria-hidden="true">-&gt;</span></a>
       <a class="btn btn--ghost" href="mailto:info@pelora-ai.com?subject=Design%20partner">Become a design partner</a>
     </div>
   </div>
@@ -223,7 +86,6 @@
     <div class="footer-top">
       <img src="/imgs/logo/pelora-logo-white.png" alt="Pelora" width="110" height="26">
       <nav class="footer-nav" aria-label="Footer">
-        <a href="/technology/">Technology</a>
         <a href="/blog/">Blog</a>
         <a href="/team/">Team</a>
         <a href="mailto:info@pelora-ai.com">Contact</a>
@@ -238,6 +100,5 @@
 </footer>
 
 <script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/demo.js" defer></script>
 </body>
 </html>

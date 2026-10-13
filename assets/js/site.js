@@ -91,8 +91,8 @@
   }
 
   /* ----------------------------------------------------- hero canvas --- */
-  /* A field of weights. Regions periodically resolve into a coherent
-     expert, hold, and dissolve back. Purely decorative. */
+  /* Decorative background: a field of points where regions periodically
+     brighten, hold, and fade. */
 
   var canvas = document.getElementById('heroCanvas');
   if (canvas && !reduceMotion) {
