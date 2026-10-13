@@ -60,7 +60,6 @@ NAV = """<a class="skip-link" href="#main">Skip to content</a>
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="/team/">Team</a></li>
       <li><a href="/blog/" aria-current="page">Blog</a></li>
       <li><a href="mailto:info@pelora-ai.com" class="nav-cta">Talk to us</a></li>
     </ul>
@@ -73,7 +72,6 @@ FOOTER = """<footer class="footer">
       <img src="/imgs/logo/pelora-logo-white.png" alt="Pelora" width="110" height="26">
       <nav class="footer-nav" aria-label="Footer">
         <a href="/blog/">Blog</a>
-        <a href="/team/">Team</a>
         <a href="mailto:info@pelora-ai.com">Contact</a>
         <a href="/rss.xml">RSS</a>
       </nav>
@@ -283,7 +281,6 @@ def render_rss(posts):
 def render_sitemap(posts):
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     urls = [(f"{SITE}/", today, "1.0"),
-            (f"{SITE}/team/", today, "0.6"),
             (f"{SITE}/blog/", today, "0.6")]
     urls += [(p["url"], p["dt"].strftime("%Y-%m-%d"), "0.5") for p in posts]
 
